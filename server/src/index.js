@@ -1,3 +1,6 @@
+import path from 'path';
+import fs from 'fs';
+import { fileURLToPath } from 'url';
 import express from 'express';
 import cors from 'cors';
 import helmet from 'helmet';
@@ -5,6 +8,9 @@ import morgan from 'morgan';
 import { config } from './config/config.js';
 import { initDatabase } from './db/index.js';
 import { apiLimiter } from './middleware/rateLimiter.js';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 import authRoutes from './routes/auth.routes.js';
 import categoriesRoutes from './routes/categories.routes.js';
@@ -24,6 +30,7 @@ try {
 
 // Security & Utility Middleware
 app.use(helmet({
+  contentSecurityPolicy: false,
   crossOriginResourcePolicy: { policy: 'cross-origin' }
 }));
 app.use(cors({
@@ -47,8 +54,23 @@ app.use('/api/advices', adviceRoutes);
 app.use('/api/advices/:id/comments', commentsRoutes);
 app.use('/api/users', usersRoutes);
 
-// 404 Handler
-app.use((req, res) => {
+// Serve client production bundle if available (Railway / Cloud deployment)
+const clientDistPath = path.resolve(__dirname, '../../client/dist');
+if (fs.existsSync(clientDistPath)) {
+  app.use(express.static(clientDistPath));
+}
+
+// 404 Handler for API
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'المسار المطلوب غير موجود' });
+});
+
+// SPA fallback for frontend client routing
+app.get('*', (req, res) => {
+  const indexHtml = path.join(clientDistPath, 'index.html');
+  if (fs.existsSync(indexHtml)) {
+    return res.sendFile(indexHtml);
+  }
   res.status(404).json({ error: 'المسار المطلوب غير موجود' });
 });
 

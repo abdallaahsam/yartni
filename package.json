@@ -1,0 +1,17 @@
+{
+  "name": "yareetni",
+  "version": "1.0.0",
+  "description": "Yareetni - Life Wisdom & Experience Sharing Platform",
+  "private": true,
+  "type": "module",
+  "main": "server/src/index.js",
+  "scripts": {
+    "build": "npm --prefix server install && npm --prefix client install && npm --prefix client run build",
+    "start": "node server/src/index.js",
+    "seed": "node server/src/db/seed.js",
+    "test": "node server/test_runner.js"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  }
+}
