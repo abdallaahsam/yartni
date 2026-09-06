@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ياريتني</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Cairo",sans-serif;
+}
+
+body{
+background:#f6f7fb;
+color:#222;
+}
+
+header{
+background:linear-gradient(135deg,#6C63FF,#4A90E2);
+color:white;
+padding:70px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:52px;
+margin-bottom:15px;
+}
+
+header p{
+font-size:20px;
+opacity:.9;
+}
+
+.search-box{
+max-width:850px;
+margin:-35px auto 40px;
+background:white;
+padding:25px;
+border-radius:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+display:flex;
+gap:15px;
+flex-wrap:wrap;
+justify-content:center;
+}
+
+select{
+padding:14px;
+border-radius:12px;
+border:1px solid #ddd;
+font-size:16px;
+min-width:180px;
+}
+
+button{
+padding:14px 30px;
+border:none;
+background:#6C63FF;
+color:white;
+border-radius:12px;
+cursor:pointer;
+font-size:16px;
+transition:.3s;
+}
+
+button:hover{
+background:#574df0;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+.section-title{
+font-size:28px;
+margin-bottom:25px;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+border-radius:18px;
+padding:22px;
+box-shadow:0 8px 20px rgba(0,0,0,.06);
+transition:.3s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+}
+
+.age{
+display:inline-block;
+background:#eef2ff;
+color:#4f46e5;
+padding:6px 14px;
+border-radius:30px;
+font-size:14px;
+margin-bottom:15px;
+}
+
+.quote{
+font-size:20px;
+font-weight:700;
+margin-bottom:15px;
+line-height:1.8;
+}
+
+.reason{
+color:#666;
+line-height:1.8;
+margin-bottom:20px;
+}
+
+.tags{
+display:flex;
+gap:10px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.tag{
+background:#f2f2f2;
+padding:6px 12px;
+border-radius:20px;
+font-size:14px;
+}
+
+.footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+font-size:14px;
+color:#777;
+}
+
+.likes{
+font-size:15px;
+}
+
+.timeline{
+margin:60px auto;
+background:white;
+padding:30px;
+border-radius:20px;
+box-shadow:0 10px 20px rgba(0,0,0,.05);
+}
+
+.timeline h2{
+margin-bottom:25px;
+}
+
+.years{
+display:flex;
+overflow:auto;
+gap:12px;
+padding-bottom:10px;
+}
+
+.year{
+min-width:70px;
+padding:12px;
+text-align:center;
+border-radius:12px;
+background:#ececff;
+cursor:pointer;
+transition:.3s;
+}
+
+.year.active{
+background:#6C63FF;
+color:white;
+}
+
+.cta{
+margin:70px auto;
+background:linear-gradient(135deg,#6C63FF,#4A90E2);
+color:white;
+padding:50px;
+border-radius:22px;
+text-align:center;
+}
+
+.cta h2{
+margin-bottom:20px;
+font-size:34px;
+}
+
+.cta button{
+background:white;
+color:#6C63FF;
+font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+<h1>💭 ياريتني</h1>
+
+<p>
+اعرف إيه اللي ناس أكبر منك تمنوا يعرفوه في عمرك الحالي.
+</p>
+
+</header>
+
+<div class="search-box">
+
+<select>
+<option>أنا عندي 20 سنة</option>
+<option>18 سنة</option>
+<option>22 سنة</option>
+<option>25 سنة</option>
+</select>
+
+<select>
+<option>كل التصنيفات</option>
+<option>الدراسة</option>
+<option>الفلوس</option>
+<option>العلاقات</option>
+<option>الصحة</option>
+</select>
+
+<button>عرض النصائح</button>
+
+</div>
+
+<div class="container">
+
+<h2 class="section-title">
+أفضل النصائح لعمر 20 سنة
+</h2>
+
+<div class="cards">
+
+<div class="card">
+
+<div class="age">
+من شخص عمره 33 سنة
+</div>
+
+<div class="quote">
+ياريتني وأنا 20 سنة بدأت أتعلم الإنجليزي بجد.
+</div>
+
+<div class="reason">
+كنت فاكر إن الوقت لسه طويل، وبعدها اكتشفت إن أغلب فرص الشغل كانت محتاجة لغة.
+</div>
+
+<div class="tags">
+<div class="tag">تعليم</div>
+<div class="tag">شغل</div>
+</div>
+
+<div class="footer">
+<div class="likes">❤️ 1200</div>
+<div>👍 430 شخص مر بنفس التجربة</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="age">
+من شخص عمره 41 سنة
+</div>
+
+<div class="quote">
+ياريتني بدأت أوفر حتى مبلغ صغير كل شهر.
+</div>
+
+<div class="reason">
+الاستثمار الحقيقي بيبدأ من العادات الصغيرة مش من المرتب الكبير.
+</div>
+
+<div class="tags">
+<div class="tag">فلوس</div>
+<div class="tag">استثمار</div>
+</div>
+
+<div class="footer">
+<div class="likes">❤️ 980</div>
+<div>🔥 مفيدة جدًا</div>
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="age">
+من شخص عمره 29 سنة
+</div>
+
+<div class="quote">
+متقارنش نفسك بحد.
+</div>
+
+<div class="reason">
+كنت بضيع سنين ببص على نجاح الناس وأنسى أبني طريقي أنا.
+</div>
+
+<div class="tags">
+<div class="tag">تطوير ذات</div>
+</div>
+
+<div class="footer">
+<div class="likes">❤️ 720</div>
+<div>💔 ناس كتير اتفقت</div>
+</div>
+
+</div>
+
+</div>
+
+<div class="timeline">
+
+<h2>استكشف النصائح حسب العمر</h2>
+
+<div class="years">
+
+<div class="year">15</div>
+<div class="year">16</div>
+<div class="year">17</div>
+<div class="year">18</div>
+<div class="year">19</div>
+<div class="year active">20</div>
+<div class="year">21</div>
+<div class="year">22</div>
+<div class="year">23</div>
+<div class="year">24</div>
+<div class="year">25</div>
+
+</div>
+
+</div>
+
+<div class="cta">
+
+<h2>
+شارك النصيحة اللي كنت تتمنى تسمعها
+</h2>
+
+<p style="margin-bottom:25px;">
+يمكن تجربتك تساعد شخص ياخد قرار يغير حياته.
+</p>
+
+<button>
+➕ أضف نصيحتك
+</button>
+
+</div>
+
+</div>
+
+</body>
+</html>
