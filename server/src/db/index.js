@@ -1,4 +1,3 @@
-import { DatabaseSync } from 'node:sqlite';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -7,7 +6,26 @@ import { config } from '../config/config.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-// Initialize SQLite database using Node's native built-in SQLite engine
+// Universal SQLite driver resolution (node:sqlite on Node >= 22.5.0, better-sqlite3 on Node < 22)
+let DatabaseSync;
+try {
+  const sqlite = await import('node:sqlite');
+  DatabaseSync = sqlite.DatabaseSync;
+} catch (e) {
+  // Fallback for Node versions where node:sqlite is not available
+}
+
+if (!DatabaseSync) {
+  try {
+    const betterSqlite = await import('better-sqlite3');
+    DatabaseSync = betterSqlite.default;
+  } catch (err) {
+    console.error('Failed to load SQLite driver:', err);
+    throw new Error('No SQLite driver available. Please install better-sqlite3 or use Node >= 22.5.0');
+  }
+}
+
+// Initialize SQLite database
 export const db = new DatabaseSync(config.dbPath);
 
 // Enable WAL mode and foreign keys
@@ -21,3 +39,4 @@ export function initDatabase() {
   // Execute schema definitions
   db.exec(schemaSql);
 }
+

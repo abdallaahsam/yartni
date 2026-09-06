@@ -43,3 +43,7 @@ desktop.ini
 *.njsproj
 *.sln
 *.sw?
+
+# Local Docs & Drafts
+IMPLEMENTATION_PLAN.md
+ياريتني.html
