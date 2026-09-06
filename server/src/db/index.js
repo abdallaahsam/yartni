@@ -1,24 +1,27 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 import { config } from '../config/config.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
 
 // Universal SQLite driver resolution (node:sqlite on Node >= 22.5.0, better-sqlite3 on Node < 22)
 let DatabaseSync;
 try {
   const sqlite = await import('node:sqlite');
-  DatabaseSync = sqlite.DatabaseSync;
+  if (sqlite && sqlite.DatabaseSync) {
+    DatabaseSync = sqlite.DatabaseSync;
+  }
 } catch (e) {
   // Fallback for Node versions where node:sqlite is not available
 }
 
 if (!DatabaseSync) {
   try {
-    const betterSqlite = await import('better-sqlite3');
-    DatabaseSync = betterSqlite.default;
+    DatabaseSync = require('better-sqlite3');
   } catch (err) {
     console.error('Failed to load SQLite driver:', err);
     throw new Error('No SQLite driver available. Please install better-sqlite3 or use Node >= 22.5.0');
