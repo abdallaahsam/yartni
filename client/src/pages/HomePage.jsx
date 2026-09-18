@@ -78,15 +78,35 @@ export default function HomePage() {
       <Navbar onSearch={handleSearch} />
 
       <main className="main-content">
-        {/* Motivational Hero Banner */}
+        {/* Motivational Hero Banner - Khedivial Salon Aesthetic */}
         <section className="hero-banner">
           <div className="hero-content">
+            <div className="hero-kicker">
+              <span className="kicker-seal">✦</span>
+              <span>خزانة الحكمة المصرية · أرشيف التجارب الواقعية</span>
+            </div>
             <h1 className="hero-title">
               لو رجع بيك الزمن.. كنت هتعمل إيه؟
             </h1>
             <p className="hero-desc">
-              منصة لمشاركة ونقل الحكمة الحياتية الحقيقية بين الأجيال. اختر عمرك لترى نصائح وتجارب واقعية من أشخاص عاشوا نفس مرحلتك وتمنوا لو كانوا يعلمونها.
+              منصة لنقل وخلاصة الحكمة الحياتية الحقيقية بين الأجيال. اختر مرحلتك العمرية لتستكشف تجارب وقصص واقعية من أشخاص عاشوا نفس اللحظة وتمنوا لو كانوا يعلمونها.
             </p>
+            <div className="hero-stats-strip">
+              <div className="hero-stat-item">
+                <strong>١٦+</strong>
+                <span>تجربة موثقة</span>
+              </div>
+              <span className="hero-stat-divider">✦</span>
+              <div className="hero-stat-item">
+                <strong>٧</strong>
+                <span>مجالات حياتية</span>
+              </div>
+              <span className="hero-stat-divider">✦</span>
+              <div className="hero-stat-item">
+                <strong>حكمة</strong>
+                <span>عابرة للأجيال</span>
+              </div>
+            </div>
           </div>
         </section>
 

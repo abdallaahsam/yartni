@@ -91,12 +91,12 @@ export default function AdviceCard({ advice, onUpdate }) {
         {/* Experience Delta & Category Header */}
         <div className="card-header-row">
           <div className="age-delta-bar">
-            <Lightbulb size={16} />
+            <span style={{ fontSize: '0.95rem' }}>⏳</span>
             <span>
-              نصيحة لسن <strong>{advice.target_age} سنة</strong>
+              عبرة لسن <strong>{advice.target_age} سنة</strong>
               {advice.author_age_at_post && (
-                <span style={{ opacity: 0.85, fontWeight: 500 }}>
-                  {' '}(من كاتب عمره {advice.author_age_at_post} سنة)
+                <span className="author-delta-note">
+                  {' '}(كتبها في عمر {advice.author_age_at_post} سنة)
                 </span>
               )}
             </span>
@@ -105,8 +105,9 @@ export default function AdviceCard({ advice, onUpdate }) {
           <div 
             className="card-category-pill" 
             style={{ 
-              backgroundColor: `${advice.category_color}18`, 
-              color: advice.category_color 
+              backgroundColor: `${advice.category_color}12`, 
+              color: advice.category_color,
+              borderColor: `${advice.category_color}40`
             }}
           >
             <span>{advice.category_icon}</span>
@@ -118,7 +119,11 @@ export default function AdviceCard({ advice, onUpdate }) {
         <div className="author-meta">
           <div 
             className="author-avatar" 
-            style={{ backgroundColor: advice.author_avatar_color || '#64748B' }}
+            style={{ 
+              background: advice.author_avatar_color 
+                ? `linear-gradient(135deg, ${advice.author_avatar_color}, #1C1917)` 
+                : 'linear-gradient(135deg, #B8923D, #755513)' 
+            }}
           >
             {advice.is_anonymous ? <UserX size={18} /> : (advice.author_name ? advice.author_name.charAt(0) : '؟')}
           </div>
@@ -132,12 +137,12 @@ export default function AdviceCard({ advice, onUpdate }) {
                 {advice.author_name}
               </Link>
             )}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'var(--text-light)' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontSize: '0.8rem', color: 'var(--text-light)', marginTop: '2px' }}>
               <span>{new Date(advice.created_at).toLocaleDateString('ar-EG', { year: 'numeric', month: 'short', day: 'numeric' })}</span>
               <span>•</span>
-              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '3px' }}>
-                <Eye size={12} />
-                {advice.view_count || 0}
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                <Eye size={13} />
+                {advice.view_count || 0} مشاهدة
               </span>
             </div>
           </div>
@@ -155,12 +160,16 @@ export default function AdviceCard({ advice, onUpdate }) {
           {advice.story}
         </p>
 
-        {/* Practical Lesson Box - Qahera Cartouche Wisdom */}
+        {/* Practical Lesson Box - Royal Cartouche Wisdom */}
         {advice.lesson && (
           <div className="advice-lesson-box">
-            <div className="lesson-label">
-              <span style={{ fontSize: '1.05rem' }}>📜</span>
-              <span>خلاصة الحكمة · لو رجع بيا الزمن:</span>
+            <div className="lesson-header-ornament">
+              <span className="ornament-line"></span>
+              <div className="lesson-label">
+                <span className="lesson-icon">📜</span>
+                <span>خلاصة الحكمة · لو رجع بيا الزمن:</span>
+              </div>
+              <span className="ornament-line"></span>
             </div>
             <p className="lesson-text">
               {advice.lesson}
