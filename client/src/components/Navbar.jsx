@@ -17,15 +17,16 @@ export default function Navbar({ onSearch }) {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
-  const [theme, setTheme] = useState(localStorage.getItem('yareetni_theme') || 'light');
+  const [mode, setMode] = useState(localStorage.getItem('yareetni_mode') || 'light');
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('yareetni_theme', theme);
-  }, [theme]);
+    document.documentElement.setAttribute('data-theme', 'downtown');
+    document.documentElement.setAttribute('data-mode', mode);
+    localStorage.setItem('yareetni_mode', mode);
+  }, [mode]);
 
-  const toggleTheme = () => {
-    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  const toggleMode = () => {
+    setMode(prev => (prev === 'light' ? 'dark' : 'light'));
   };
 
   const handleSearchSubmit = (e) => {
@@ -46,6 +47,9 @@ export default function Navbar({ onSearch }) {
             <Sparkles size={22} />
           </div>
           <span>ياريتني</span>
+          <span className="qhr-badge qhr-badge--primary qhr-badge--pill" style={{ fontSize: '0.68rem', padding: '2px 8px', fontWeight: 700 }}>
+            وسط البلد
+          </span>
         </Link>
 
         {/* Global Search Bar */}
@@ -64,11 +68,11 @@ export default function Navbar({ onSearch }) {
           {/* Theme Toggle Button */}
           <button 
             type="button" 
-            onClick={toggleTheme} 
+            onClick={toggleMode} 
             className="icon-btn" 
-            title={theme === 'light' ? 'الوضع الداكن' : 'الوضع المضيء'}
+            title={mode === 'light' ? 'الوضع الداكن' : 'الوضع المضيء'}
           >
-            {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+            {mode === 'light' ? <Moon size={19} /> : <Sun size={19} />}
           </button>
 
           {/* New Advice Button */}

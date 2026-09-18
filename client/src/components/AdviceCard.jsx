@@ -155,16 +155,19 @@ export default function AdviceCard({ advice, onUpdate }) {
           {advice.story}
         </p>
 
-        {/* Practical Lesson Box */}
+        {/* Practical Lesson Box - Qahera Cartouche Wisdom */}
         {advice.lesson && (
           <div className="advice-lesson-box">
             <div className="lesson-label">
-              <span>💡</span>
-              <span>لو رجع بيا الزمن هعمل:</span>
+              <span style={{ fontSize: '1.05rem' }}>📜</span>
+              <span>خلاصة الحكمة · لو رجع بيا الزمن:</span>
             </div>
             <p className="lesson-text">
               {advice.lesson}
             </p>
+            <div className="qhr-cartouche__knot">
+              <div className="qhr-cartouche__knot-bar" />
+            </div>
           </div>
         )}
 

@@ -1,0 +1,4334 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vscode-html-languageservice/main/docs/customData.schema.json",
+  "version": 1.1,
+  "globalAttributes": [
+    {
+      "name": "data-theme",
+      "description": "أطلس أحياء القاهرة المعماري الـ 13 لتبديل الهوية البصرية والثقافية اللحظية (QAHERA-THEME-001)",
+      "values": [
+        {
+          "name": "zamalek",
+          "description": "الزمالك (Zamalek) · آرت ديكو وفخامة القصور النيلية الدبلوماسية (Belle Époque & Champagne Gold)"
+        },
+        {
+          "name": "downtown",
+          "description": "وسط البلد (Downtown) · عمارة الخديوي إسماعيل والحواف الهندسية الحادة (Khedivial Classical & Editorial Swiss)"
+        },
+        {
+          "name": "heliopolis",
+          "description": "هليوبوليس (Heliopolis) · طراز البارون إمبان ومصر الجديدة الدافئة (Sandstone Terraces & Neo-Pharaonic)"
+        },
+        {
+          "name": "maadi",
+          "description": "المعادي (Maadi) · ضاحية الأشجار والهدوء العضوي الانسيابي (Degla Limestone & Serene Botanical)"
+        },
+        {
+          "name": "new-cairo",
+          "description": "القاهرة الجديدة (New Cairo) · الحداثة التقنية والواجهات الزجاجية المينيمالية (Tech Monolith & Frosted Glass)"
+        },
+        {
+          "name": "shubra",
+          "description": "شبرا (Shubra) · النيو-بروتاليزم المصري الشعبي والدفء الاجتماعي (Industrial Copper & Communal Energy)"
+        },
+        {
+          "name": "nubia",
+          "description": "النوبة (Nubia) · التراكوتا المشمسة وهندسة الطمي النيلي الأصيل (Adobe Geometry & Nile Terracotta)"
+        },
+        {
+          "name": "sinai",
+          "description": "سيناء (Sinai) · الهندسة البدوية وأوبسيديان الجبال والنجوم (Bedouin Geometry & Desert Obsidian)"
+        },
+        {
+          "name": "roxy",
+          "description": "روكسي (Roxy) · نوستالجيا التسعينات وظلال النيون الحادة (Egyptian Y2K & Playful Retro)"
+        },
+        {
+          "name": "sakakini",
+          "description": "السكاكيني (Sakakini) · قصر السكاكيني وفخامة الروكوكو والدراما المعمارية (Rococo Palace & High Drama)"
+        },
+        {
+          "name": "garden-city",
+          "description": "جاردن سيتي (Garden City) · الشوارع المنحنية والكلاسيكية الإنجليزية (Belle Époque & Soft Jade)"
+        },
+        {
+          "name": "el-hussein",
+          "description": "الحسين (El Hussein) · القاهرة الفاطمية والتراث الإسلامي العريق (Fatimid Gold & Islamic Geometry)"
+        },
+        {
+          "name": "cairo-azure",
+          "description": "أزرق القاهرة (Cairo Azure) · زرقة الغسق النيلي واللازورد الملكي (Nile Dusk Reflection & Cobalt)"
+        },
+        {
+          "name": "luxury-gold",
+          "description": "الذهب الفاخر (Luxury Gold) · هيبة الذهب الملكي الفرعوني والأسطح الداكنة (Pharaonic Gold & Obsidian)"
+        }
+      ],
+      "references": [
+        {
+          "name": "Cairo Thematic Topography",
+          "url": "https://qahera.alwkala.com/studio/"
+        }
+      ]
+    },
+    {
+      "name": "data-mode",
+      "description": "وضع التباين الضوئي لمنظومة قاهرة المعمارية (Dual-Mode: Light / Dark)",
+      "values": [
+        {
+          "name": "light",
+          "description": "نمط النهار (Day Mode) · تباين ناصع وسطوع متزن"
+        },
+        {
+          "name": "dark",
+          "description": "نمط الليل (Night Mode) · أسطح أوبسيديان داكنة وظلال ناعمة"
+        }
+      ]
+    },
+    {
+      "name": "dir",
+      "description": "اتجاه تدفق الواجهة والتحكم ثنائي الاتجاه المبني كبنية تحتية (RTL / LTR)",
+      "values": [
+        {
+          "name": "rtl",
+          "description": "الاتجاه العربي الأصيل من اليمين لليسار (Right-to-Left)"
+        },
+        {
+          "name": "ltr",
+          "description": "الاتجاه الإنجليزي من اليسار لليمين (Left-to-Right)"
+        }
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "name": "qhr-accordion",
+      "description": "### 🏛️ `<qhr-accordion>`\n**مكون قاهرة المعماري الأصيل** · `Accordion` (disclosure)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Accordion.yaml`\n\n```html\n<qhr-accordion variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-accordion>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Accordion (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Accordion (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Accordion.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-alert",
+      "description": "### 🏛️ `<qhr-alert>`\n**مكون قاهرة المعماري الأصيل** · `Alert` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Alert.yaml`\n\n```html\n<qhr-alert variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-alert>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Alert (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Alert (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Alert.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-avatar",
+      "description": "### 🏛️ `<qhr-avatar>`\n**مكون قاهرة المعماري الأصيل** · `Avatar` (media)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Avatar.yaml`\n\n```html\n<qhr-avatar variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-avatar>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Avatar (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Avatar (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Avatar.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-back-to-top",
+      "description": "### 🏛️ `<qhr-back-to-top>`\n**مكون قاهرة المعماري الأصيل** · `BackToTop` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/BackToTop.yaml`\n\n```html\n<qhr-back-to-top variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-back-to-top>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون BackToTop (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "luxury",
+              "description": "Variant: luxury"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون BackToTop (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "md",
+              "description": "Size: md"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/BackToTop.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-badge",
+      "description": "### 🏛️ `<qhr-badge>`\n**مكون قاهرة المعماري الأصيل** · `Badge` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Badge.yaml`\n\n```html\n<qhr-badge variant=\"solid\" size=\"md\">\n  محتوى المكون\n</qhr-badge>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Badge (Variant)",
+          "values": [
+            {
+              "name": "solid",
+              "description": "Variant: solid"
+            },
+            {
+              "name": "subtle",
+              "description": "Variant: subtle"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "destructive",
+              "description": "Variant: destructive"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Badge (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "shape",
+          "description": "الشكل الهندسي لمكون Badge (Shape: default | rounded | flat | circle)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Shape: default"
+            },
+            {
+              "name": "pill",
+              "description": "Shape: pill"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Badge.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-breadcrumb",
+      "description": "### 🏛️ `<qhr-breadcrumb>`\n**مكون قاهرة المعماري الأصيل** · `Breadcrumb` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Breadcrumb.yaml`\n\n```html\n<qhr-breadcrumb variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-breadcrumb>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Breadcrumb (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "slash",
+              "description": "Variant: slash"
+            },
+            {
+              "name": "chevron",
+              "description": "Variant: chevron"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Breadcrumb (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Breadcrumb.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-button",
+      "description": "### 🏛️ `<qhr-button>`\n**مكون قاهرة المعماري الأصيل** · `Button` (actions)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Button.yaml`\n\n```html\n<qhr-button variant=\"primary\" size=\"md\">\n  محتوى المكون\n</qhr-button>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Button (Variant)",
+          "values": [
+            {
+              "name": "primary",
+              "description": "Variant: primary"
+            },
+            {
+              "name": "secondary",
+              "description": "Variant: secondary"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "ghost",
+              "description": "Variant: ghost"
+            },
+            {
+              "name": "link",
+              "description": "Variant: link"
+            },
+            {
+              "name": "destructive",
+              "description": "Variant: destructive"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Button (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "xs",
+              "description": "Size: xs"
+            },
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "tone",
+          "description": "النبرة الدلالية لمكون Button (Tone: neutral | primary | success | warning | danger | info)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Tone: default"
+            },
+            {
+              "name": "primary",
+              "description": "Tone: primary"
+            },
+            {
+              "name": "secondary",
+              "description": "Tone: secondary"
+            },
+            {
+              "name": "info",
+              "description": "Tone: info"
+            },
+            {
+              "name": "success",
+              "description": "Tone: success"
+            },
+            {
+              "name": "danger",
+              "description": "Tone: danger"
+            },
+            {
+              "name": "warning",
+              "description": "Tone: warning"
+            },
+            {
+              "name": "dark",
+              "description": "Tone: dark"
+            },
+            {
+              "name": "light",
+              "description": "Tone: light"
+            }
+          ]
+        },
+        {
+          "name": "shape",
+          "description": "الشكل الهندسي لمكون Button (Shape: default | rounded | flat | circle)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Shape: default"
+            },
+            {
+              "name": "rounded",
+              "description": "Shape: rounded"
+            },
+            {
+              "name": "flat",
+              "description": "Shape: flat"
+            },
+            {
+              "name": "circle",
+              "description": "Shape: circle"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Button.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-callout",
+      "description": "### 🏛️ `<qhr-callout>`\n**مكون قاهرة المعماري الأصيل** · `Callout` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Callout.yaml`\n\n```html\n<qhr-callout variant=\"subtle\" size=\"md\">\n  محتوى المكون\n</qhr-callout>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Callout (Variant)",
+          "values": [
+            {
+              "name": "subtle",
+              "description": "Variant: subtle"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "luxury",
+              "description": "Variant: luxury"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Callout (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Callout.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-canvas-sparks",
+      "description": "### 🏛️ `<qhr-canvas-sparks>`\n**مكون قاهرة المعماري الأصيل** · `CanvasSparks` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/CanvasSparks.yaml`\n\n```html\n<qhr-canvas-sparks variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-canvas-sparks>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون CanvasSparks (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "emerald",
+              "description": "Variant: emerald"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون CanvasSparks (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "full",
+              "description": "Size: full"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/CanvasSparks.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-card",
+      "description": "### 🏛️ `<qhr-card>`\n**مكون قاهرة المعماري الأصيل** · `Card` (containers)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Card.yaml`\n\n```html\n<qhr-card variant=\"outline\" size=\"md\">\n  محتوى المكون\n</qhr-card>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Card (Variant)",
+          "values": [
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "elevated",
+              "description": "Variant: elevated"
+            },
+            {
+              "name": "flat",
+              "description": "Variant: flat"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Card (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Card.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-carousel",
+      "description": "### 🏛️ `<qhr-carousel>`\n**مكون قاهرة المعماري الأصيل** · `Carousel` (media)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Carousel.yaml`\n\n```html\n<qhr-carousel variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-carousel>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Carousel (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "luxury",
+              "description": "Variant: luxury"
+            },
+            {
+              "name": "fade",
+              "description": "Variant: fade"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Carousel (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Carousel.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-cartouche",
+      "description": "### 🏛️ `<qhr-cartouche>`\n**مكون قاهرة المعماري الأصيل** · `Cartouche` (containers)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/cartouche.yaml`\n\n```html\n<qhr-cartouche variant=\"outline\" size=\"md\">\n  محتوى المكون\n</qhr-cartouche>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Cartouche (Variant)",
+          "values": [
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "elevated",
+              "description": "Variant: elevated"
+            },
+            {
+              "name": "solid",
+              "description": "Variant: solid"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Cartouche (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/cartouche.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-checkbox",
+      "description": "### 🏛️ `<qhr-checkbox>`\n**مكون قاهرة المعماري الأصيل** · `Checkbox` (selection)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Checkbox.yaml`\n\n```html\n<qhr-checkbox variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-checkbox>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Checkbox (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Checkbox (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Checkbox.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-chip",
+      "description": "### 🏛️ `<qhr-chip>`\n**مكون قاهرة المعماري الأصيل** · `Chip` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Chip.yaml`\n\n```html\n<qhr-chip variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-chip>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Chip (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "primary",
+              "description": "Variant: primary"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Chip (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Chip.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-divider",
+      "description": "### 🏛️ `<qhr-divider>`\n**مكون قاهرة المعماري الأصيل** · `Divider` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Divider.yaml`\n\n```html\n<qhr-divider variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-divider>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Divider (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "dashed",
+              "description": "Variant: dashed"
+            },
+            {
+              "name": "strong",
+              "description": "Variant: strong"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Divider (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Divider.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-dock",
+      "description": "### 🏛️ `<qhr-dock>`\n**مكون قاهرة المعماري الأصيل** · `Dock` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Dock.yaml`\n\n```html\n<qhr-dock variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-dock>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Dock (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Dock (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Dock.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-drawer",
+      "description": "### 🏛️ `<qhr-drawer>`\n**مكون قاهرة المعماري الأصيل** · `Drawer` (overlay)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Drawer.yaml`\n\n```html\n<qhr-drawer variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-drawer>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Drawer (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "elevated",
+              "description": "Variant: elevated"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Drawer (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Drawer.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-dropdown",
+      "description": "### 🏛️ `<qhr-dropdown>`\n**مكون قاهرة المعماري الأصيل** · `Dropdown` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Dropdown.yaml`\n\n```html\n<qhr-dropdown variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-dropdown>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Dropdown (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Dropdown (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Dropdown.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-file-upload",
+      "description": "### 🏛️ `<qhr-file-upload>`\n**مكون قاهرة المعماري الأصيل** · `FileUpload` (forms)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/FileUpload.yaml`\n\n```html\n<qhr-file-upload variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-file-upload>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون FileUpload (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "compact",
+              "description": "Variant: compact"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون FileUpload (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/FileUpload.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-frieze",
+      "description": "### 🏛️ `<qhr-frieze>`\n**مكون قاهرة المعماري الأصيل** · `Frieze` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/frieze.yaml`\n\n```html\n<qhr-frieze variant=\"outline\" size=\"md\">\n  محتوى المكون\n</qhr-frieze>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Frieze (Variant)",
+          "values": [
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "subtle",
+              "description": "Variant: subtle"
+            },
+            {
+              "name": "solid",
+              "description": "Variant: solid"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Frieze (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/frieze.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-input",
+      "description": "### 🏛️ `<qhr-input>`\n**مكون قاهرة المعماري الأصيل** · `Input` (forms)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Input.yaml`\n\n```html\n<qhr-input variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-input>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Input (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "filled",
+              "description": "Variant: filled"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Input (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Input.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-kbd",
+      "description": "### 🏛️ `<qhr-kbd>`\n**مكون قاهرة المعماري الأصيل** · `Kbd` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Kbd.yaml`\n\n```html\n<qhr-kbd variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-kbd>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Kbd (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Kbd (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Kbd.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-megamenu",
+      "description": "### 🏛️ `<qhr-megamenu>`\n**مكون قاهرة المعماري الأصيل** · `Megamenu` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Megamenu.yaml`\n\n```html\n<qhr-megamenu variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-megamenu>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Megamenu (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Megamenu (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Megamenu.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-menu",
+      "description": "### 🏛️ `<qhr-menu>`\n**مكون قاهرة المعماري الأصيل** · `Menu` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Menu.yaml`\n\n```html\n<qhr-menu variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-menu>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Menu (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Menu (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Menu.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-modal",
+      "description": "### 🏛️ `<qhr-modal>`\n**مكون قاهرة المعماري الأصيل** · `Modal` (overlay)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Modal.yaml`\n\n```html\n<qhr-modal variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-modal>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Modal (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "destructive",
+              "description": "Variant: destructive"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Modal (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Modal.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-navbar",
+      "description": "### 🏛️ `<qhr-navbar>`\n**مكون قاهرة المعماري الأصيل** · `Navbar` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Navbar.yaml`\n\n```html\n<qhr-navbar variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-navbar>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Navbar (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Navbar (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Navbar.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-pagination",
+      "description": "### 🏛️ `<qhr-pagination>`\n**مكون قاهرة المعماري الأصيل** · `Pagination` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Pagination.yaml`\n\n```html\n<qhr-pagination variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-pagination>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Pagination (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            },
+            {
+              "name": "ghost",
+              "description": "Variant: ghost"
+            },
+            {
+              "name": "pills",
+              "description": "Variant: pills"
+            },
+            {
+              "name": "segmented",
+              "description": "Variant: segmented"
+            },
+            {
+              "name": "compact",
+              "description": "Variant: compact"
+            },
+            {
+              "name": "icons-only",
+              "description": "Variant: icons-only"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Pagination (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Pagination.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-preloader",
+      "description": "### 🏛️ `<qhr-preloader>`\n**مكون قاهرة المعماري الأصيل** · `Preloader` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Preloader.yaml`\n\n```html\n<qhr-preloader variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-preloader>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Preloader (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "luxury",
+              "description": "Variant: luxury"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Preloader (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "md",
+              "description": "Size: md"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Preloader.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-progress",
+      "description": "### 🏛️ `<qhr-progress>`\n**مكون قاهرة المعماري الأصيل** · `Progress` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Progress.yaml`\n\n```html\n<qhr-progress variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-progress>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Progress (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "striped",
+              "description": "Variant: striped"
+            },
+            {
+              "name": "animated",
+              "description": "Variant: animated"
+            },
+            {
+              "name": "gradient",
+              "description": "Variant: gradient"
+            },
+            {
+              "name": "indeterminate",
+              "description": "Variant: indeterminate"
+            },
+            {
+              "name": "segmented",
+              "description": "Variant: segmented"
+            },
+            {
+              "name": "vertical",
+              "description": "Variant: vertical"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Progress (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "xxs",
+              "description": "Size: xxs"
+            },
+            {
+              "name": "xs",
+              "description": "Size: xs"
+            },
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "shape",
+          "description": "الشكل الهندسي لمكون Progress (Shape: default | rounded | flat | circle)",
+          "values": [
+            {
+              "name": "linear",
+              "description": "Shape: linear"
+            },
+            {
+              "name": "circular",
+              "description": "Shape: circular"
+            },
+            {
+              "name": "vertical",
+              "description": "Shape: vertical"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Progress.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-radio",
+      "description": "### 🏛️ `<qhr-radio>`\n**مكون قاهرة المعماري الأصيل** · `Radio` (selection)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Radio.yaml`\n\n```html\n<qhr-radio variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-radio>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Radio (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Radio (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Radio.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-rating",
+      "description": "### 🏛️ `<qhr-rating>`\n**مكون قاهرة المعماري الأصيل** · `Rating` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Rating.yaml`\n\n```html\n<qhr-rating variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-rating>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Rating (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "accent",
+              "description": "Variant: accent"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Rating (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Rating.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-ribbon",
+      "description": "### 🏛️ `<qhr-ribbon>`\n**مكون قاهرة المعماري الأصيل** · `Ribbon` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Ribbon.yaml`\n\n```html\n<qhr-ribbon variant=\"folded\" size=\"md\">\n  محتوى المكون\n</qhr-ribbon>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Ribbon (Variant)",
+          "values": [
+            {
+              "name": "folded",
+              "description": "Variant: folded"
+            },
+            {
+              "name": "corner",
+              "description": "Variant: corner"
+            },
+            {
+              "name": "bookmark",
+              "description": "Variant: bookmark"
+            },
+            {
+              "name": "flat",
+              "description": "Variant: flat"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Ribbon (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Ribbon.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-seal",
+      "description": "### 🏛️ `<qhr-seal>`\n**مكون قاهرة المعماري الأصيل** · `Seal` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/seal.yaml`\n\n```html\n<qhr-seal variant=\"solid\" size=\"md\">\n  محتوى المكون\n</qhr-seal>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Seal (Variant)",
+          "values": [
+            {
+              "name": "solid",
+              "description": "Variant: solid"
+            },
+            {
+              "name": "subtle",
+              "description": "Variant: subtle"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Seal (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/seal.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-select",
+      "description": "### 🏛️ `<qhr-select>`\n**مكون قاهرة المعماري الأصيل** · `Select` (forms)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Select.yaml`\n\n```html\n<qhr-select variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-select>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Select (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "outline",
+              "description": "Variant: outline"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Select (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Select.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-skeleton",
+      "description": "### 🏛️ `<qhr-skeleton>`\n**مكون قاهرة المعماري الأصيل** · `Skeleton` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Skeleton.yaml`\n\n```html\n<qhr-skeleton variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-skeleton>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Skeleton (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "wave",
+              "description": "Variant: wave"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Skeleton (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Skeleton.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-spinner",
+      "description": "### 🏛️ `<qhr-spinner>`\n**مكون قاهرة المعماري الأصيل** · `Spinner` (feedback)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Spinner.yaml`\n\n```html\n<qhr-spinner variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-spinner>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Spinner (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "gold",
+              "description": "Variant: gold"
+            },
+            {
+              "name": "track",
+              "description": "Variant: track"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Spinner (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "xs",
+              "description": "Size: xs"
+            },
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            },
+            {
+              "name": "xl",
+              "description": "Size: xl"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Spinner.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-stepper",
+      "description": "### 🏛️ `<qhr-stepper>`\n**مكون قاهرة المعماري الأصيل** · `Stepper` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Stepper.yaml`\n\n```html\n<qhr-stepper variant=\"horizontal\" size=\"md\">\n  محتوى المكون\n</qhr-stepper>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Stepper (Variant)",
+          "values": [
+            {
+              "name": "horizontal",
+              "description": "Variant: horizontal"
+            },
+            {
+              "name": "vertical",
+              "description": "Variant: vertical"
+            },
+            {
+              "name": "numbers",
+              "description": "Variant: numbers"
+            },
+            {
+              "name": "dots",
+              "description": "Variant: dots"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Stepper (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Stepper.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-switch",
+      "description": "### 🏛️ `<qhr-switch>`\n**مكون قاهرة المعماري الأصيل** · `Switch` (selection)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Switch.yaml`\n\n```html\n<qhr-switch variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-switch>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Switch (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "gold",
+              "description": "Variant: gold"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Switch (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Switch.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-table",
+      "description": "### 🏛️ `<qhr-table>`\n**مكون قاهرة المعماري الأصيل** · `Table` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Table.yaml`\n\n```html\n<qhr-table variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-table>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Table (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Table (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Table.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-tabs",
+      "description": "### 🏛️ `<qhr-tabs>`\n**مكون قاهرة المعماري الأصيل** · `Tabs` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Tabs.yaml`\n\n```html\n<qhr-tabs variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-tabs>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Tabs (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Tabs (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Tabs.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-textarea",
+      "description": "### 🏛️ `<qhr-textarea>`\n**مكون قاهرة المعماري الأصيل** · `Textarea` (forms)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Textarea.yaml`\n\n```html\n<qhr-textarea variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-textarea>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Textarea (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Textarea (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Textarea.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-timeline",
+      "description": "### 🏛️ `<qhr-timeline>`\n**مكون قاهرة المعماري الأصيل** · `Timeline` (data-display)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Timeline.yaml`\n\n```html\n<qhr-timeline variant=\"vertical\" size=\"md\">\n  محتوى المكون\n</qhr-timeline>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Timeline (Variant)",
+          "values": [
+            {
+              "name": "vertical",
+              "description": "Variant: vertical"
+            },
+            {
+              "name": "horizontal",
+              "description": "Variant: horizontal"
+            },
+            {
+              "name": "activity",
+              "description": "Variant: activity"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Timeline (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Timeline.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-toast",
+      "description": "### 🏛️ `<qhr-toast>`\n**مكون قاهرة المعماري الأصيل** · `Toast` (overlay)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Toast.yaml`\n\n```html\n<qhr-toast variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-toast>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Toast (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Toast (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Toast.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-tooltip",
+      "description": "### 🏛️ `<qhr-tooltip>`\n**مكون قاهرة المعماري الأصيل** · `Tooltip` (overlay)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Tooltip.yaml`\n\n```html\n<qhr-tooltip variant=\"-\" size=\"md\">\n  محتوى المكون\n</qhr-tooltip>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Tooltip (Variant)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Variant: -"
+            },
+            {
+              "name": "-",
+              "description": "Variant: -"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Tooltip (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "-",
+              "description": "Size: -"
+            },
+            {
+              "name": "-",
+              "description": "Size: -"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Tooltip.yaml"
+        }
+      ]
+    },
+    {
+      "name": "qhr-treeview",
+      "description": "### 🏛️ `<qhr-treeview>`\n**مكون قاهرة المعماري الأصيل** · `Treeview` (navigation)\n\n> **الغرض والوظيفة:** مكون ويب معياري مستقل (Autonomous Web Component)\n\n- **العقد الدلالي:** `contracts/components/Treeview.yaml`\n\n```html\n<qhr-treeview variant=\"default\" size=\"md\">\n  محتوى المكون\n</qhr-treeview>\n```\n\n---\n*Qahera UI Kit v1.5.4 · Sovereign Egyptian Design System by Alwkala*",
+      "attributes": [
+        {
+          "name": "variant",
+          "description": "النمط البصري المعياري لمكون Treeview (Variant)",
+          "values": [
+            {
+              "name": "default",
+              "description": "Variant: default"
+            },
+            {
+              "name": "clean",
+              "description": "Variant: clean"
+            }
+          ]
+        },
+        {
+          "name": "size",
+          "description": "الحجم المعياري لمكون Treeview (Size: xs | sm | md | lg | xl)",
+          "values": [
+            {
+              "name": "sm",
+              "description": "Size: sm"
+            },
+            {
+              "name": "md",
+              "description": "Size: md"
+            },
+            {
+              "name": "lg",
+              "description": "Size: lg"
+            }
+          ]
+        },
+        {
+          "name": "elevation",
+          "description": "مستوى الارتفاع والظل لمكون قاهرة (none | xs | sm | md | lg | xl | cartouche | book)",
+          "values": [
+            {
+              "name": "none",
+              "description": "بدون ظل"
+            },
+            {
+              "name": "xs",
+              "description": "ظل دقيق"
+            },
+            {
+              "name": "sm",
+              "description": "ظل خفيف"
+            },
+            {
+              "name": "md",
+              "description": "ظل قياسي"
+            },
+            {
+              "name": "lg",
+              "description": "ظل مرتفع"
+            },
+            {
+              "name": "xl",
+              "description": "ظل طافٍ"
+            },
+            {
+              "name": "cartouche",
+              "description": "ظل الخرطوشة الفرعونية المذهبة"
+            },
+            {
+              "name": "book",
+              "description": "ظل المخطوطة التحريرية العميقة"
+            }
+          ]
+        }
+      ],
+      "references": [
+        {
+          "name": "Qahera Documentation",
+          "url": "https://qahera.alwkala.com/docs/components"
+        },
+        {
+          "name": "Component Contract",
+          "url": "https://github.com/alwkala/Qahera-UI-Kit/blob/main/contracts/components/Treeview.yaml"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://qahera.alwkala.com/schema.json",
+  "version": "1.5.2",
+  "style": "default",
+  "theme": "default",
+  "target": "react",
+  "aliases": {
+    "components": "@/components/ui/qahera",
+    "styles": "src/styles/qahera"
+  }
+}

@@ -1,55 +1,62 @@
 /* ==========================================================================
-   Yareetni Design System - Modern Vibrant Social (RTL First)
+   Qahera UI Kit - Architectural CSS Layers (Tokens, Themes, Components)
+   ========================================================================== */
+@import './styles/qahera/tokens.css';
+@import './styles/qahera/themes.css';
+@import './styles/qahera/qahera.css';
+
+/* ==========================================================================
+   Yareetni Design System - Downtown Theme (Khedivial Heritage Edition)
    ========================================================================== */
 
 :root {
-  /* Color Palette - Vibrant & Optimistic */
-  --primary: #3B82F6;
-  --primary-hover: #2563EB;
-  --primary-light: #EFF6FF;
-  --primary-glow: rgba(59, 130, 246, 0.25);
+  /* Qahera Downtown Palette - Khedivial Bronze, Antique Gold & Vintage Brick */
+  --primary: var(--qhr-color-primary, #9E7728);
+  --primary-hover: var(--qhr-color-primary-hover, #876520);
+  --primary-light: rgba(158, 119, 40, 0.12);
+  --primary-glow: rgba(158, 119, 40, 0.28);
 
-  --secondary: #8B5CF6;
-  --secondary-hover: #7C3AED;
-  --secondary-light: #F5F3FF;
-  --secondary-glow: rgba(139, 92, 246, 0.25);
+  --secondary: var(--qhr-color-accent, #9B3133);
+  --secondary-hover: #802628;
+  --secondary-light: rgba(155, 49, 51, 0.12);
+  --secondary-glow: rgba(155, 49, 51, 0.25);
 
-  --accent-emerald: #10B981;
-  --accent-emerald-light: #ECFDF5;
-  --accent-amber: #F59E0B;
-  --accent-amber-light: #FFFBEB;
-  --accent-rose: #F43F5E;
-  --accent-rose-light: #FFF1F2;
+  --accent-emerald: #135E4E; /* Wadj - Sacred Malachite Emerald */
+  --accent-emerald-light: #E6F3EF;
+  --accent-amber: #C29B38;  /* Nebu - Sacred Sun Gold */
+  --accent-amber-light: #FDF8EC;
+  --accent-rose: #9B3133;
+  --accent-rose-light: #FDF1F1;
 
-  /* Surfaces & Backgrounds (Light Default) */
-  --bg-main: #F8FAFC;
-  --bg-card: #FFFFFF;
-  --bg-card-hover: #FAFAFA;
-  --bg-subtle: #F1F5F9;
-  --bg-glass: rgba(255, 255, 255, 0.85);
+  /* Surfaces & Backgrounds - Khedivial Paper Beige */
+  --bg-main: var(--qhr-surface-page, #F6F3EC);
+  --bg-card: var(--qhr-surface-card, #FFFFFF);
+  --bg-card-hover: var(--qhr-surface-muted, #FBF9F5);
+  --bg-subtle: var(--qhr-surface-muted, #ECE6DC);
+  --bg-glass: rgba(246, 243, 236, 0.92);
 
-  /* Borders & Dividers */
-  --border-color: #E2E8F0;
-  --border-color-light: #F1F5F9;
-  --border-color-hover: #CBD5E1;
+  /* Borders & Dividers - Warm Antique Linework */
+  --border-color: var(--qhr-color-border, #DED6C7);
+  --border-color-light: var(--qhr-border-subtle, #ECE6DC);
+  --border-color-hover: var(--qhr-border-strong, #C9BEAA);
 
-  /* Typography Colors */
-  --text-main: #0F172A;
-  --text-muted: #64748B;
-  --text-light: #94A3B8;
+  /* Typography Colors - Warm Antique Ink */
+  --text-main: var(--qhr-text-primary, #1C1917);
+  --text-muted: var(--qhr-text-secondary, #574E45);
+  --text-light: var(--qhr-text-muted, #786C60);
   --text-inverse: #FFFFFF;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.07), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -4px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-  --shadow-vibrant: 0 10px 25px -5px rgba(59, 130, 246, 0.2);
+  /* Shadows - Warm Soft Architectural Elevation */
+  --shadow-sm: 0 1px 3px 0 rgba(28, 25, 23, 0.06);
+  --shadow-md: 0 4px 12px -1px rgba(28, 25, 23, 0.08), 0 2px 4px -2px rgba(28, 25, 23, 0.05);
+  --shadow-lg: 0 10px 24px -3px rgba(28, 25, 23, 0.1), 0 4px 8px -4px rgba(28, 25, 23, 0.05);
+  --shadow-xl: 0 20px 32px -5px rgba(28, 25, 23, 0.14), 0 8px 12px -6px rgba(28, 25, 23, 0.06);
+  --shadow-vibrant: 0 10px 25px -5px rgba(158, 119, 40, 0.28);
 
-  /* Radii */
-  --radius-sm: 8px;
-  --radius-md: 14px;
-  --radius-lg: 20px;
+  /* Radii - Architectural Restraint */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
   --radius-full: 9999px;
 
   /* Transitions */
@@ -57,32 +64,41 @@
   --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-theme='dark'] {
-  --bg-main: #0B0F19;
-  --bg-card: #131B2E;
-  --bg-card-hover: #1A243D;
-  --bg-subtle: #1E293B;
-  --bg-glass: rgba(19, 27, 46, 0.88);
+[data-mode='dark'], [data-theme='dark'] {
+  --primary: var(--qhr-color-primary, #C29B38);
+  --primary-hover: var(--qhr-color-primary-hover, #AD872C);
+  --primary-light: rgba(194, 155, 56, 0.15);
+  --primary-glow: rgba(194, 155, 56, 0.35);
 
-  --border-color: #243048;
-  --border-color-light: #1A2338;
-  --border-color-hover: #334155;
+  --secondary: var(--qhr-color-accent, #9B3133);
+  --secondary-hover: #B2393B;
+  --secondary-light: rgba(155, 49, 51, 0.2);
+  --secondary-glow: rgba(155, 49, 51, 0.3);
 
-  --text-main: #F8FAFC;
-  --text-muted: #94A3B8;
-  --text-light: #64748B;
+  --accent-emerald-light: rgba(19, 94, 78, 0.25);
+  --accent-amber-light: rgba(194, 155, 56, 0.2);
+  --accent-rose-light: rgba(155, 49, 51, 0.2);
 
-  --primary-light: rgba(59, 130, 246, 0.15);
-  --secondary-light: rgba(139, 92, 246, 0.15);
-  --accent-emerald-light: rgba(16, 185, 129, 0.15);
-  --accent-amber-light: rgba(245, 158, 11, 0.15);
-  --accent-rose-light: rgba(244, 63, 94, 0.15);
+  /* Deep Roast Coffee & Dark Cedar Surface */
+  --bg-main: var(--qhr-surface-page, #161311);
+  --bg-card: var(--qhr-surface-card, #211D19);
+  --bg-card-hover: #292420;
+  --bg-subtle: var(--qhr-surface-muted, #2C2722);
+  --bg-glass: rgba(33, 29, 25, 0.94);
 
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.6);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.7);
-  --shadow-vibrant: 0 10px 25px -5px rgba(59, 130, 246, 0.4);
+  --border-color: var(--qhr-color-border, rgba(255, 255, 255, 0.12));
+  --border-color-light: var(--qhr-border-subtle, rgba(255, 255, 255, 0.06));
+  --border-color-hover: var(--qhr-border-strong, rgba(255, 255, 255, 0.24));
+
+  --text-main: var(--qhr-text-primary, #FAF6F0);
+  --text-muted: var(--qhr-text-secondary, #C5B9AC);
+  --text-light: var(--qhr-text-muted, #8A7D70);
+
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.55);
+  --shadow-md: 0 4px 10px -1px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 10px 20px -3px rgba(0, 0, 0, 0.75);
+  --shadow-xl: 0 20px 30px -5px rgba(0, 0, 0, 0.85);
+  --shadow-vibrant: 0 10px 25px -5px rgba(194, 155, 56, 0.4);
 }
 
 /* ==========================================================================
@@ -648,22 +664,67 @@ button {
   line-height: 1.7;
 }
 
-/* Practical Lesson Box ("لو رجع بيا الزمن هعمل...") */
+/* Practical Lesson Box ("لو رجع بيا الزمن هعمل...") - Qahera Cartouche Wisdom Styling */
 .advice-lesson-box {
-  background: linear-gradient(135deg, rgba(16, 185, 129, 0.07) 0%, rgba(59, 130, 246, 0.05) 100%);
-  border-right: 4px solid var(--accent-emerald);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
+  position: relative;
+  background: linear-gradient(135deg, rgba(158, 119, 40, 0.08) 0%, rgba(155, 49, 51, 0.05) 100%);
+  border-inline-start: 4px solid var(--primary);
+  border-block: 1px solid var(--border-color);
+  border-inline-end: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  transition: all var(--transition-normal);
+}
+
+[data-mode='dark'] .advice-lesson-box, [data-theme='dark'] .advice-lesson-box {
+  background: linear-gradient(135deg, rgba(194, 155, 56, 0.12) 0%, rgba(155, 49, 51, 0.08) 100%);
+  border-inline-start-color: var(--primary);
+  border-block-color: rgba(255, 255, 255, 0.1);
+  border-inline-end-color: rgba(255, 255, 255, 0.1);
+}
+
+.advice-lesson-box:hover {
+  border-inline-start-color: var(--primary-hover);
+  box-shadow: 0 4px 14px rgba(158, 119, 40, 0.12);
 }
 
 .lesson-label {
   display: flex;
   align-items: center;
-  gap: 6px;
-  font-weight: 800;
-  font-size: 0.92rem;
-  color: var(--accent-emerald);
-  margin-bottom: 6px;
+  gap: 8px;
+  font-family: 'Alexandria', sans-serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+/* Qahera Cartouche Container Component */
+.qhr-cartouche {
+  position: relative;
+  border: 1.5px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 18px 22px;
+  background: var(--bg-card);
+  transition: all var(--transition-normal);
+}
+
+.qhr-cartouche--elevated {
+  box-shadow: 0 4px 20px rgba(158, 119, 40, 0.09);
+}
+
+.qhr-cartouche__knot {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.qhr-cartouche__knot-bar {
+  width: 54px;
+  height: 3px;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, transparent, var(--primary), transparent);
 }
 
 .lesson-text {
