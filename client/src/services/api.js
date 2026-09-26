@@ -1,7 +1,7 @@
 const API_BASE = '/api';
 
 function getAuthHeader() {
-  const token = localStorage.getItem('yareetni_token');
+  const token = localStorage.getItem('yareetny_token') || localStorage.getItem('yareetni_token');
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 

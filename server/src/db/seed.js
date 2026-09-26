@@ -3,7 +3,7 @@ import { db, initDatabase } from './index.js';
 import { slugify } from '../utils/slugify.js';
 
 async function seed() {
-  console.log('🌱 Starting Yareetni database seeding...');
+  console.log('🌱 Starting Yareetny database seeding...');
   
   // Ensure tables exist
   initDatabase();

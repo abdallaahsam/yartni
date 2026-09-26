@@ -15,7 +15,7 @@ import {
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import ReportModal from './ReportModal';
-import confetti from 'canvas-confetti';
+import confetti from '../utils/confetti';
 
 export default function AdviceCard({ advice, onUpdate }) {
   const { user } = useAuth();
@@ -76,13 +76,31 @@ export default function AdviceCard({ advice, onUpdate }) {
     }
   };
 
-  // Handle Share link copy
-  const handleShare = (e) => {
+  // Handle Share link with Web Share API on mobile & clipboard copy fallback
+  const handleShare = async (e) => {
     e.preventDefault();
     const fullUrl = `${window.location.origin}${adviceUrl}`;
-    navigator.clipboard.writeText(fullUrl);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: `نصيحة على Yareetny: ${advice.headline}`,
+          text: `لو رجع بيا الزمن: ${advice.headline}\n${advice.lesson || ''}`,
+          url: fullUrl
+        });
+        return;
+      } catch (err) {
+        // User cancelled or share failed, fallback to clipboard copy below
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(fullUrl);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      console.error('Failed to copy', err);
+    }
   };
 
   return (

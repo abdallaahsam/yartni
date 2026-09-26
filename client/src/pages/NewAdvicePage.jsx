@@ -4,7 +4,7 @@ import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import { Sparkles, Send, Lightbulb, Lock, Globe, ArrowRight } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import confetti from '../utils/confetti';
 
 export default function NewAdvicePage() {
   const { user } = useAuth();

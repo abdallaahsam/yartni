@@ -47,8 +47,9 @@ export default function SidebarFilters({
 
       {/* Community Wisdom Box */}
       <div style={{
-        background: 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(16, 185, 129, 0.08) 100%)',
+        background: 'linear-gradient(135deg, rgba(13, 148, 136, 0.1) 0%, rgba(5, 150, 105, 0.08) 100%)',
         border: '1px solid var(--border-color)',
+        borderRight: '3.5px solid var(--primary)',
         borderRadius: 'var(--radius-md)',
         padding: '16px',
         display: 'flex',
@@ -57,7 +58,7 @@ export default function SidebarFilters({
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', fontWeight: '700', fontSize: '0.95rem' }}>
           <Sparkles size={18} />
-          <span>رسالة المنصة</span>
+          <span>رسالة منصة Yareetny</span>
         </div>
         <p style={{ fontSize: '0.88rem', color: 'var(--text-muted)', lineHeight: '1.6' }}>
           بدل أن تتعلم من أخطائك فقط، استفد من خلاصة وتجارب من سبقوك لنفس مرحلتك العمرية.

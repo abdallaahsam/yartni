@@ -4,11 +4,11 @@ import { api } from '../services/api';
 import Navbar from '../components/Navbar';
 import SidebarFilters from '../components/SidebarFilters';
 import AdviceCard from '../components/AdviceCard';
-import { Sparkles, Flame, Clock, ThumbsUp, Calendar } from 'lucide-react';
+import { Sparkles, Flame, Clock, ThumbsUp, Calendar, Compass, ChevronLeft, X } from 'lucide-react';
 
 const COMMON_AGES = ['all', '18', '20', '22', '25', '30', '35', '40+'];
 
-export default function HomePage() {
+export default function HomePage({ onOpenCategories }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [advices, setAdvices] = useState([]);
@@ -24,7 +24,7 @@ export default function HomePage() {
   // Fetch categories once
   useEffect(() => {
     api.getCategories()
-      .then(res => setCategories(res.categories))
+      .then(res => setCategories(res.categories || []))
       .catch(console.error);
   }, []);
 
@@ -40,8 +40,8 @@ export default function HomePage() {
       limit: 12
     })
       .then(res => {
-        setAdvices(res.advices);
-        setPagination(res.pagination);
+        setAdvices(res.advices || []);
+        setPagination(res.pagination || { total: 0, page: 1, totalPages: 1 });
       })
       .catch(console.error)
       .finally(() => setLoading(false));
@@ -73,17 +73,19 @@ export default function HomePage() {
     updateParam('q', q);
   };
 
+  const selectedCategoryObj = categories.find(c => c.slug === currentCategory);
+
   return (
     <div className="app-container">
       <Navbar onSearch={handleSearch} />
 
       <main className="main-content">
-        {/* Motivational Hero Banner - Khedivial Salon Aesthetic */}
+        {/* Motivational Hero Banner - Yareetny Maadi Aesthetic */}
         <section className="hero-banner">
           <div className="hero-content">
             <div className="hero-kicker">
-              <span className="kicker-seal">✦</span>
-              <span>خزانة الحكمة المصرية · أرشيف التجارب الواقعية</span>
+              <span className="kicker-seal">🌿</span>
+              <span>واحة الحكمة الحياتية · منصة Yareetny لتبادل تجارب الأجيال</span>
             </div>
             <h1 className="hero-title">
               لو رجع بيك الزمن.. كنت هتعمل إيه؟
@@ -110,7 +112,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Age Selector Ribbon */}
+        {/* Age Selector Ribbon (Interactive Touch Carousel) */}
         <section className="age-ribbon-container">
           <div className="age-ribbon-header">
             <div className="age-ribbon-title">
@@ -121,9 +123,10 @@ export default function HomePage() {
               <button 
                 type="button" 
                 onClick={() => handleAgeSelect('all')}
-                style={{ fontSize: '0.88rem', color: 'var(--primary)', fontWeight: '600' }}
+                className="reset-filter-btn"
               >
-                إظهار جميع الأعمار
+                <span>إظهار جميع الأعمار</span>
+                <X size={14} />
               </button>
             )}
           </div>
@@ -141,39 +144,105 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* Content Layout: Sidebar + Feed */}
+        {/* Mobile-Only Horizontal Category Chips Carousel */}
+        <section className="mobile-category-strip mobile-only">
+          <div className="mobile-category-header">
+            <div className="mobile-category-title">
+              <Compass size={17} color="var(--primary)" />
+              <span>مجالات الحياة:</span>
+            </div>
+            {onOpenCategories && (
+              <button 
+                type="button" 
+                className="mobile-all-categories-btn"
+                onClick={onOpenCategories}
+              >
+                <span>جميع المجالات</span>
+                <ChevronLeft size={16} />
+              </button>
+            )}
+          </div>
+
+          <div className="mobile-category-pills">
+            <button
+              type="button"
+              className={`mobile-cat-pill ${currentCategory === 'all' ? 'active' : ''}`}
+              onClick={() => handleCategorySelect('all')}
+            >
+              <span>🌐</span>
+              <span>الكل</span>
+            </button>
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                type="button"
+                className={`mobile-cat-pill ${currentCategory === cat.slug ? 'active' : ''}`}
+                onClick={() => handleCategorySelect(cat.slug)}
+              >
+                <span>{cat.icon}</span>
+                <span>{cat.name}</span>
+                {cat.advice_count > 0 && (
+                  <span className="mobile-cat-count">{cat.advice_count}</span>
+                )}
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* Content Layout: Desktop Sidebar + Feed */}
         <div className="content-grid">
-          {/* Sidebar Filters */}
-          <SidebarFilters
-            categories={categories}
-            selectedCategory={currentCategory}
-            onSelectCategory={handleCategorySelect}
-          />
+          {/* Desktop-Only Sidebar Filters */}
+          <div className="desktop-only">
+            <SidebarFilters
+              categories={categories}
+              selectedCategory={currentCategory}
+              onSelectCategory={handleCategorySelect}
+            />
+          </div>
 
           {/* Feed Column */}
           <div className="feed-column">
             {/* Feed Header & Sort Tabs */}
             <div className="feed-header">
               <div className="feed-title-wrap">
-                <h2>
-                  {currentAge !== 'all' ? `نصائح لسن ${currentAge} سنة` : 'أبرز النصائح والتجارب'}
-                  {currentCategory !== 'all' && (
-                    <span style={{ fontSize: '1rem', color: 'var(--text-muted)', fontWeight: 500, marginInlineStart: '8px' }}>
-                      ({categories.find(c => c.slug === currentCategory)?.name || currentCategory})
-                    </span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <h2>
+                    {currentAge !== 'all' ? `نصائح لسن ${currentAge} سنة` : 'أبرز النصائح والتجارب'}
+                  </h2>
+                  {selectedCategoryObj && (
+                    <button 
+                      type="button"
+                      className="category-active-tag"
+                      onClick={() => handleCategorySelect('all')}
+                      title="إلغاء تصفية المجال"
+                    >
+                      <span>{selectedCategoryObj.icon}</span>
+                      <span>{selectedCategoryObj.name}</span>
+                      <X size={14} />
+                    </button>
                   )}
-                </h2>
+                </div>
                 {currentQuery && (
-                  <p>نتائج البحث عن: "{currentQuery}"</p>
+                  <p className="search-query-indicator">
+                    نتائج البحث عن: "<strong>{currentQuery}</strong>"
+                    <button 
+                      type="button" 
+                      onClick={() => updateParam('q', '')}
+                      className="clear-search-btn"
+                    >
+                      إلغاء البحث
+                    </button>
+                  </p>
                 )}
               </div>
 
-              {/* Sorting Tabs */}
+              {/* Sorting Tabs (Touch-friendly Segmented Control) */}
               <div className="sort-tabs">
                 <button
                   type="button"
                   className={`sort-tab ${currentSort === 'trending' ? 'active' : ''}`}
                   onClick={() => handleSortSelect('trending')}
+                  aria-label="فرز حسب الأكثر تفاعلاً"
                 >
                   <Flame size={16} />
                   <span>الصاعدة 🔥</span>
@@ -182,6 +251,7 @@ export default function HomePage() {
                   type="button"
                   className={`sort-tab ${currentSort === 'top' ? 'active' : ''}`}
                   onClick={() => handleSortSelect('top')}
+                  aria-label="فرز حسب الأكثر تأثيراً"
                 >
                   <ThumbsUp size={16} />
                   <span>الأكثر تأثيراً</span>
@@ -190,6 +260,7 @@ export default function HomePage() {
                   type="button"
                   className={`sort-tab ${currentSort === 'latest' ? 'active' : ''}`}
                   onClick={() => handleSortSelect('latest')}
+                  aria-label="فرز حسب الأحدث"
                 >
                   <Clock size={16} />
                   <span>الأحدث</span>
@@ -219,6 +290,18 @@ export default function HomePage() {
                 <p style={{ color: 'var(--text-muted)' }}>
                   كن أول من يشارك نصيحة أو تجربة ملهمة لهذا السن أو التصنيف!
                 </p>
+                <button 
+                  type="button" 
+                  onClick={() => {
+                    handleAgeSelect('all');
+                    handleCategorySelect('all');
+                    updateParam('q', '');
+                  }}
+                  className="btn btn-secondary"
+                  style={{ marginTop: '8px' }}
+                >
+                  إعادة ضبط جميع الفلاتر
+                </button>
               </div>
             )}
           </div>

@@ -44,7 +44,7 @@ app.use('/api/', apiLimiter);
 
 // Health Check
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', time: new Date().toISOString(), platform: 'Yareetni API' });
+  res.json({ status: 'ok', time: new Date().toISOString(), platform: 'Yareetny API' });
 });
 
 // API Routes
@@ -81,7 +81,7 @@ app.use((err, req, res, next) => {
 });
 
 const server = app.listen(config.port, '0.0.0.0', () => {
-  console.log(`🚀 Yareetni Server running on port ${config.port}`);
+  console.log(`🚀 Yareetny Server running on port ${config.port}`);
 });
 
 export { app, server };

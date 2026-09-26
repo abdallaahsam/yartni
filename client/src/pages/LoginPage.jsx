@@ -48,7 +48,7 @@ export default function LoginPage() {
             </div>
             <h1 style={{ fontSize: '1.6rem', marginBottom: '6px' }}>تسجيل الدخول</h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-              أهلاً بك مجدداً في مجتمع "ياريتني"
+              أهلاً بك مجدداً في مجتمع Yareetny (ياريتني)
             </p>
           </div>
 

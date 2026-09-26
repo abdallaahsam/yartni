@@ -4,7 +4,7 @@ import { db } from './src/db/index.js';
 const BASE = 'http://localhost:5000/api';
 
 async function runSuite() {
-  console.log('🧪 Starting Yareetni comprehensive test suite...\n');
+  console.log('🧪 Starting Yareetny comprehensive test suite...\n');
 
   let passed = 0;
   let failed = 0;

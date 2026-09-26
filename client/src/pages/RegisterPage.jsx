@@ -3,7 +3,7 @@ import { useNavigate, Link, useSearchParams } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
 import { Sparkles, UserPlus } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import confetti from '../utils/confetti';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -65,7 +65,7 @@ export default function RegisterPage() {
             </div>
             <h1 style={{ fontSize: '1.6rem', marginBottom: '6px' }}>إنشاء حساب جديد</h1>
             <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem' }}>
-              انضم لمجتمع تبادل الحكمة ونقل التجارب الحقيقية
+              انضم لمجتمع Yareetny (ياريتني) لتبادل الحكمة ونقل التجارب الحقيقية
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function RegisterPage() {
                 required
               />
               <span style={{ fontSize: '0.78rem', color: 'var(--text-light)' }}>
-                سيكون رابط ملفك الشخصي: yareetni.com/u/{username || 'username'}
+                سيكون رابط ملفك الشخصي: yareetny.com/u/{username || 'username'}
               </span>
             </div>
 

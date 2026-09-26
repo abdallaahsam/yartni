@@ -1,7 +1,7 @@
 {
-  "name": "yareetni",
+  "name": "yareetny",
   "version": "1.0.0",
-  "description": "Yareetni - Life Wisdom & Experience Sharing Platform",
+  "description": "Yareetny - Life Wisdom & Experience Sharing Platform",
   "private": true,
   "type": "module",
   "main": "server/src/index.js",

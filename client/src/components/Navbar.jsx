@@ -11,18 +11,22 @@ import {
   Moon, 
   Sun 
 } from 'lucide-react';
+import MobileSearchModal from './MobileSearchModal';
 
 export default function Navbar({ onSearch }) {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const [searchTerm, setSearchTerm] = useState('');
-  const [mode, setMode] = useState(localStorage.getItem('yareetni_mode') || 'light');
+  const [mode, setMode] = useState(
+    localStorage.getItem('yareetny_mode') || localStorage.getItem('yareetni_mode') || 'light'
+  );
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'downtown');
+    document.documentElement.setAttribute('data-theme', 'maadi');
     document.documentElement.setAttribute('data-mode', mode);
-    localStorage.setItem('yareetni_mode', mode);
+    localStorage.setItem('yareetny_mode', mode);
   }, [mode]);
 
   const toggleMode = () => {
@@ -38,85 +42,143 @@ export default function Navbar({ onSearch }) {
     }
   };
 
+  const handleMobileSearch = (query) => {
+    setSearchTerm(query);
+    if (onSearch) {
+      onSearch(query);
+    } else {
+      navigate(`/?q=${encodeURIComponent(query)}`);
+    }
+  };
+
   return (
-    <header className="navbar">
-      <div className="navbar-inner">
-        {/* Brand Logo */}
-        <Link to="/" className="brand-logo">
-          <div className="brand-icon">
-            <Sparkles size={22} />
-          </div>
-          <span>ياريتني</span>
-          <span className="qhr-badge qhr-badge--primary qhr-badge--pill" style={{ fontSize: '0.68rem', padding: '2px 8px', fontWeight: 700 }}>
-            وسط البلد
-          </span>
-        </Link>
-
-        {/* Global Search Bar */}
-        <form className="nav-search" onSubmit={handleSearchSubmit}>
-          <Search size={18} className="nav-search-icon" />
-          <input
-            type="text"
-            placeholder="ابحث في نصائح وحكمة الحياة..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </form>
-
-        {/* Navigation Actions */}
-        <div className="nav-actions">
-          {/* Theme Toggle Button */}
-          <button 
-            type="button" 
-            onClick={toggleMode} 
-            className="icon-btn" 
-            title={mode === 'light' ? 'الوضع الداكن' : 'الوضع المضيء'}
-          >
-            {mode === 'light' ? <Moon size={19} /> : <Sun size={19} />}
-          </button>
-
-          {/* New Advice Button */}
-          <Link to="/new" className="btn btn-primary">
-            <PlusCircle size={18} />
-            <span>أضف نصيحة</span>
+    <>
+      <header className="navbar">
+        <div className="navbar-inner">
+          {/* Brand Logo - Yareetny & ياريتني */}
+          <Link to="/" className="brand-logo" aria-label="Yareetny - ياريتني">
+            <div className="brand-icon">
+              <Sparkles size={22} />
+            </div>
+            <div className="brand-text-wrap">
+              <span className="brand-name">Yareetny</span>
+              <span className="brand-sub">ياريتني</span>
+            </div>
+            <span className="qhr-badge qhr-badge--primary brand-theme-badge">
+              المعادي 🌿
+            </span>
           </Link>
 
-          {/* User Menu or Auth Links */}
-          {user ? (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Link to="/saved" className="icon-btn" title="النصائح المحفوظة">
-                <Bookmark size={18} />
-              </Link>
-              <Link 
-                to={`/u/${user.username}`} 
-                className="btn btn-secondary"
-                style={{ padding: '6px 14px', gap: '8px' }}
-                title="الملف الشخصي"
-              >
-                <div 
-                  className="author-avatar" 
-                  style={{ width: '26px', height: '26px', fontSize: '0.8rem', backgroundColor: user.avatar_color || 'var(--primary)' }}
-                >
-                  {user.name.charAt(0)}
+          {/* Desktop Global Search Bar */}
+          <form className="nav-search desktop-only" onSubmit={handleSearchSubmit}>
+            <Search size={18} className="nav-search-icon" />
+            <input
+              type="text"
+              placeholder="ابحث في نصائح وحكمة Yareetny..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+            />
+          </form>
+
+          {/* Navigation Actions */}
+          <div className="nav-actions">
+            {/* Mobile Search Trigger Icon Button */}
+            <button 
+              type="button" 
+              onClick={() => setIsSearchModalOpen(true)} 
+              className="icon-btn mobile-only" 
+              title="بحث"
+              aria-label="فتح شاشة البحث"
+            >
+              <Search size={19} />
+            </button>
+
+            {/* Theme Toggle Button (Desktop & Mobile) */}
+            <button 
+              type="button" 
+              onClick={toggleMode} 
+              className="icon-btn" 
+              title={mode === 'light' ? 'الوضع الداكن' : 'الوضع المضيء'}
+              aria-label="تبديل مظهر الموقع"
+            >
+              {mode === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+            </button>
+
+            {/* New Advice Button (Desktop only, mobile has bottom bar center button) */}
+            <Link to="/new" className="btn btn-primary desktop-only">
+              <PlusCircle size={18} />
+              <span>أضف نصيحة</span>
+            </Link>
+
+            {/* Desktop User Menu or Auth Links */}
+            <div className="desktop-only">
+              {user ? (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Link to="/saved" className="icon-btn" title="النصائح المحفوظة">
+                    <Bookmark size={18} />
+                  </Link>
+                  <Link 
+                    to={`/u/${user.username}`} 
+                    className="btn btn-secondary"
+                    style={{ padding: '6px 14px', gap: '8px' }}
+                    title="الملف الشخصي"
+                  >
+                    <div 
+                      className="author-avatar" 
+                      style={{ width: '26px', height: '26px', fontSize: '0.8rem', backgroundColor: user.avatar_color || 'var(--primary)' }}
+                    >
+                      {user.name.charAt(0)}
+                    </div>
+                    <span>{user.name.split(' ')[0]}</span>
+                  </Link>
+                  <button onClick={logout} className="icon-btn" title="تسجيل الخروج">
+                    <LogOut size={17} />
+                  </button>
                 </div>
-                <span>{user.name.split(' ')[0]}</span>
-              </Link>
-              <button onClick={logout} className="icon-btn" title="تسجيل الخروج">
-                <LogOut size={17} />
-              </button>
+              ) : (
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Link to="/login" className="btn btn-secondary">
+                    دخول
+                  </Link>
+                  <Link to="/register" className="btn btn-primary" style={{ background: 'var(--primary)' }}>
+                    حساب جديد
+                  </Link>
+                </div>
+              )}
             </div>
-          ) : (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-              <Link to="/login" className="btn btn-secondary">
-                دخول
-              </Link>
-              <Link to="/register" className="btn btn-primary" style={{ background: 'var(--primary)' }}>
-                حساب جديد
-              </Link>
+
+            {/* Mobile User Profile Avatar quick access */}
+            <div className="mobile-only">
+              {user ? (
+                <Link 
+                  to={`/u/${user.username}`} 
+                  className="mobile-header-avatar"
+                  title="ملفك الشخصي"
+                >
+                  <div 
+                    className="author-avatar" 
+                    style={{ width: '34px', height: '34px', fontSize: '0.9rem', backgroundColor: user.avatar_color || 'var(--primary)' }}
+                  >
+                    {user.name.charAt(0)}
+                  </div>
+                </Link>
+              ) : (
+                <Link to="/login" className="icon-btn" title="تسجيل الدخول">
+                  <User size={19} />
+                </Link>
+              )}
             </div>
-          )}
+          </div>
         </div>
-      </div>
-    </header>
+      </header>
+
+      {/* Mobile Interactive Search Modal */}
+      <MobileSearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+        onSearch={handleMobileSearch}
+        initialValue={searchTerm}
+      />
+    </>
   );
 }
