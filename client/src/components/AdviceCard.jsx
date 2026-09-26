@@ -178,23 +178,18 @@ export default function AdviceCard({ advice, onUpdate }) {
           {advice.story}
         </p>
 
-        {/* Practical Lesson Box - Royal Cartouche Wisdom */}
+        {/* Practical Lesson Box - Meta Feature Callout */}
         {advice.lesson && (
           <div className="advice-lesson-box">
             <div className="lesson-header-ornament">
-              <span className="ornament-line"></span>
               <div className="lesson-label">
-                <span className="lesson-icon">📜</span>
+                <span className="lesson-icon">💡</span>
                 <span>خلاصة الحكمة · لو رجع بيا الزمن:</span>
               </div>
-              <span className="ornament-line"></span>
             </div>
             <p className="lesson-text">
               {advice.lesson}
             </p>
-            <div className="qhr-cartouche__knot">
-              <div className="qhr-cartouche__knot-bar" />
-            </div>
           </div>
         )}
 

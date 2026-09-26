@@ -1,6 +1,6 @@
 // Lightweight zero-dependency celebration particle burst (replaces 25KB canvas-confetti)
 export default function confetti() {
-  const colors = ['#0D9488', '#14B8A6', '#059669', '#E5B83B', '#E11D48'];
+  const colors = ['#0064E0', '#1876F2', '#0091FF', '#A121CE', '#31A24C', '#F7B928'];
   const count = 30;
   for (let i = 0; i < count; i++) {
     const el = document.createElement('div');

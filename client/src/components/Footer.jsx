@@ -44,8 +44,8 @@ export default function Footer() {
             <div className="footer-col">
               <h4>عن المنصة</h4>
               <ul>
-                <li><span style={{ color: 'var(--text-muted)' }}>طراز المعادي 🌿</span></li>
-                <li><span style={{ color: 'var(--text-muted)' }}>تصميم وتجربة أصيلة</span></li>
+                <li><span style={{ color: 'var(--text-muted)' }}>نظام تصميم حديث</span></li>
+                <li><span style={{ color: 'var(--text-muted)' }}>تجربة استخدام واضحة وموثوقة</span></li>
                 <li><span style={{ color: 'var(--text-muted)' }}>خصوصية وأمان المجتمع</span></li>
               </ul>
             </div>

@@ -24,7 +24,7 @@ export default function Navbar({ onSearch }) {
   const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', 'maadi');
+    document.documentElement.setAttribute('data-theme', 'meta');
     document.documentElement.setAttribute('data-mode', mode);
     localStorage.setItem('yareetny_mode', mode);
   }, [mode]);
@@ -64,9 +64,6 @@ export default function Navbar({ onSearch }) {
               <span className="brand-name">Yareetny</span>
               <span className="brand-sub">ياريتني</span>
             </div>
-            <span className="qhr-badge qhr-badge--primary brand-theme-badge">
-              المعادي 🌿
-            </span>
           </Link>
 
           {/* Desktop Global Search Bar */}

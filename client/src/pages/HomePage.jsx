@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../services/api';
 import Navbar from '../components/Navbar';
 import SidebarFilters from '../components/SidebarFilters';
 import AdviceCard from '../components/AdviceCard';
-import { Sparkles, Flame, Clock, ThumbsUp, Calendar, Compass, ChevronLeft, X } from 'lucide-react';
+import { Sparkles, Flame, Clock, ThumbsUp, Calendar, Compass, ChevronLeft, X, ArrowLeft } from 'lucide-react';
 
 const COMMON_AGES = ['all', '18', '20', '22', '25', '30', '35', '40+'];
 
@@ -80,12 +80,11 @@ export default function HomePage({ onOpenCategories }) {
       <Navbar onSearch={handleSearch} />
 
       <main className="main-content">
-        {/* Motivational Hero Banner - Yareetny Maadi Aesthetic */}
+        {/* Hero Band - Meta Design System Aesthetic */}
         <section className="hero-banner">
           <div className="hero-content">
             <div className="hero-kicker">
-              <span className="kicker-seal">🌿</span>
-              <span>واحة الحكمة الحياتية · منصة Yareetny لتبادل تجارب الأجيال</span>
+              <span>منصة Yareetny لتبادل تجارب وحكمة الأجيال</span>
             </div>
             <h1 className="hero-title">
               لو رجع بيك الزمن.. كنت هتعمل إيه؟
@@ -93,17 +92,25 @@ export default function HomePage({ onOpenCategories }) {
             <p className="hero-desc">
               منصة لنقل وخلاصة الحكمة الحياتية الحقيقية بين الأجيال. اختر مرحلتك العمرية لتستكشف تجارب وقصص واقعية من أشخاص عاشوا نفس اللحظة وتمنوا لو كانوا يعلمونها.
             </p>
+            <div className="hero-cta-group">
+              <Link to="/new" className="btn btn-primary hero-btn-main">
+                أضف تجربتك الآن
+              </Link>
+              <a href="#feed-anchor" className="btn btn-secondary hero-btn-sub">
+                استكشف التجارب
+              </a>
+            </div>
             <div className="hero-stats-strip">
               <div className="hero-stat-item">
                 <strong>١٦+</strong>
                 <span>تجربة موثقة</span>
               </div>
-              <span className="hero-stat-divider">✦</span>
+              <span className="hero-stat-divider">·</span>
               <div className="hero-stat-item">
                 <strong>٧</strong>
                 <span>مجالات حياتية</span>
               </div>
-              <span className="hero-stat-divider">✦</span>
+              <span className="hero-stat-divider">·</span>
               <div className="hero-stat-item">
                 <strong>حكمة</strong>
                 <span>عابرة للأجيال</span>
@@ -190,7 +197,7 @@ export default function HomePage({ onOpenCategories }) {
         </section>
 
         {/* Content Layout: Desktop Sidebar + Feed */}
-        <div className="content-grid">
+        <div className="content-grid" id="feed-anchor">
           {/* Desktop-Only Sidebar Filters */}
           <div className="desktop-only">
             <SidebarFilters
