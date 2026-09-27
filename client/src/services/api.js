@@ -44,6 +44,7 @@ export const api = {
     if (params.sort) query.append('sort', params.sort);
     if (params.q) query.append('q', params.q);
     if (params.page) query.append('page', params.page);
+    if (params.limit) query.append('limit', params.limit);
     return request(`/advices?${query.toString()}`);
   },
   getAdvice: (id) => request(`/advices/${id}`),

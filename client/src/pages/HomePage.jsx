@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { api } from '../services/api';
 import Navbar from '../components/Navbar';
 import SidebarFilters from '../components/SidebarFilters';
 import AdviceCard from '../components/AdviceCard';
+import AgeDial from '../components/AgeDial';
 import { Sparkles, Flame, Clock, ThumbsUp, Calendar, Compass, ChevronLeft, X, ArrowLeft } from 'lucide-react';
 
 const COMMON_AGES = ['all', '18', '20', '22', '25', '30', '35', '40+'];
@@ -75,6 +76,15 @@ export default function HomePage({ onOpenCategories }) {
 
   const selectedCategoryObj = categories.find(c => c.slug === currentCategory);
 
+  // Age picked on the hero dial; null until the visitor touches it
+  const [dialAge, setDialAge] = useState(null);
+  const handleDialAge = useCallback((age) => setDialAge(age), []);
+  const handleSeeAge = (age) => {
+    handleAgeSelect(age >= 40 ? '40+' : String(age));
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    document.getElementById('feed-anchor')?.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
+  };
+
   return (
     <div className="app-container">
       <Navbar onSearch={handleSearch} />
@@ -87,7 +97,7 @@ export default function HomePage({ onOpenCategories }) {
               <span>منصة Yareetny لتبادل تجارب وحكمة الأجيال</span>
             </div>
             <h1 className="hero-title">
-              لو رجع بيك الزمن.. كنت هتعمل إيه؟
+              لو رجع بيك الزمن{dialAge && <> لسن <span className="hero-title-age">{dialAge}</span></>}.. كنت هتعمل إيه؟
             </h1>
             <p className="hero-desc">
               منصة لنقل وخلاصة الحكمة الحياتية الحقيقية بين الأجيال. اختر مرحلتك العمرية لتستكشف تجارب وقصص واقعية من أشخاص عاشوا نفس اللحظة وتمنوا لو كانوا يعلمونها.
@@ -117,6 +127,8 @@ export default function HomePage({ onOpenCategories }) {
               </div>
             </div>
           </div>
+
+          <AgeDial onAgeChange={handleDialAge} onSeeAge={handleSeeAge} />
         </section>
 
         {/* Age Selector Ribbon (Interactive Touch Carousel) */}

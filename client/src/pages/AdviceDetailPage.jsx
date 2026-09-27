@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import Navbar from '../components/Navbar';
@@ -9,16 +9,21 @@ import { ArrowRight, MessageCircle, Send, User } from 'lucide-react';
 export default function AdviceDetailPage() {
   const { id } = useParams();
   const { user } = useAuth();
+  const location = useLocation();
 
-  const [advice, setAdvice] = useState(null);
+  // A card opened from a feed hands over its data, so the page (and the letter transition) renders instantly
+  const handedOver = location.state?.advice;
+  const initialAdvice = handedOver && String(handedOver.id) === String(id) ? handedOver : null;
+
+  const [advice, setAdvice] = useState(initialAdvice);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState('');
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(!initialAdvice);
   const [submittingComment, setSubmittingComment] = useState(false);
   const [commentError, setCommentError] = useState('');
 
   useEffect(() => {
-    setLoading(true);
+    if (!initialAdvice) setLoading(true);
     Promise.all([
       api.getAdvice(id),
       api.getComments(id)
@@ -72,10 +77,10 @@ export default function AdviceDetailPage() {
         ) : advice ? (
           <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
             {/* Advice Full View */}
-            <AdviceCard advice={advice} onUpdate={(u) => setAdvice(u)} />
+            <AdviceCard advice={advice} onUpdate={(u) => setAdvice(u)} isOpen />
 
             {/* Comments & Discussions Section */}
-            <section style={{
+            <section className="advice-discussion" style={{
               backgroundColor: 'var(--bg-card)',
               border: '1px solid var(--border-color)',
               borderRadius: 'var(--radius-lg)',

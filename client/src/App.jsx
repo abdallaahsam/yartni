@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useNavigate, useLocation, useNavigationType } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
 import { api } from './services/api';
 import HomePage from './pages/HomePage';
@@ -18,6 +18,13 @@ export default function App() {
   const location = useLocation();
   const [categories, setCategories] = useState([]);
   const [isCategoriesDrawerOpen, setIsCategoriesDrawerOpen] = useState(false);
+
+  // New pages open at the top; Back/Forward (POP) keeps the browser's own scroll behavior.
+  // Keyed on pathname so feed filters (?age=, ?sort=) don't jump the page.
+  const navigationType = useNavigationType();
+  useEffect(() => {
+    if (navigationType !== 'POP') window.scrollTo(0, 0);
+  }, [location.pathname, navigationType]);
 
   useEffect(() => {
     api.getCategories()
