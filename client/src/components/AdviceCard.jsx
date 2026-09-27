@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { 
   Heart, 
@@ -16,8 +16,9 @@ import { api } from '../services/api';
 import { useAuth } from '../context/AuthContext';
 import ReportModal from './ReportModal';
 import confetti from '../utils/confetti';
+import { openAdvice } from '../utils/viewTransition';
 
-export default function AdviceCard({ advice, onUpdate }) {
+export default function AdviceCard({ advice, onUpdate, isOpen = false }) {
   const { user } = useAuth();
   const navigate = useNavigate();
 
@@ -28,13 +29,21 @@ export default function AdviceCard({ advice, onUpdate }) {
   const [showReportModal, setShowReportModal] = useState(false);
   const [animatingImpact, setAnimatingImpact] = useState(false);
 
+  const cardRef = useRef(null);
   const adviceUrl = `/advice/${advice.id}/${advice.slug || 'advice'}`;
+
+  // Plain left-clicks open the advice with the letter transition; modified clicks keep native link behavior
+  const handleOpen = (e) => {
+    if (isOpen || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    e.preventDefault();
+    openAdvice(navigate, adviceUrl, { ...advice, has_impacted: hasImpacted, impact_count: impactCount, has_bookmarked: hasBookmarked }, cardRef.current);
+  };
 
   // Handle "أثرت فيّ" toggle
   const handleImpact = async (e) => {
     e.preventDefault();
     if (!user) {
-      navigate('/login');
+      navigate(`/login?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`);
       return;
     }
 
@@ -63,7 +72,7 @@ export default function AdviceCard({ advice, onUpdate }) {
   const handleBookmark = async (e) => {
     e.preventDefault();
     if (!user) {
-      navigate('/login');
+      navigate(`/login?redirect=${encodeURIComponent(window.location.pathname + window.location.search)}`);
       return;
     }
 
@@ -105,7 +114,11 @@ export default function AdviceCard({ advice, onUpdate }) {
 
   return (
     <>
-      <article className="advice-card">
+      <article
+        ref={cardRef}
+        className={`advice-card${isOpen ? ' is-open' : ''}`}
+        style={isOpen ? { viewTransitionName: 'advice-letter' } : undefined}
+      >
         {/* Experience Delta & Category Header */}
         <div className="card-header-row">
           <div className="age-delta-bar">
@@ -168,7 +181,7 @@ export default function AdviceCard({ advice, onUpdate }) {
 
         {/* Headline */}
         <h3 className="advice-headline">
-          <Link to={adviceUrl}>
+          <Link to={adviceUrl} onClick={handleOpen}>
             {advice.headline}
           </Link>
         </h3>
@@ -209,7 +222,7 @@ export default function AdviceCard({ advice, onUpdate }) {
             </button>
 
             {/* Comments */}
-            <Link to={adviceUrl} className="action-btn" title="المناقشات والتعليقات">
+            <Link to={adviceUrl} onClick={handleOpen} className="action-btn" title="المناقشات والتعليقات">
               <MessageCircle size={18} />
               <span>تعليق</span>
               {advice.comments_count > 0 && (

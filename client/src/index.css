@@ -157,8 +157,20 @@
   --meta-hairline: rgba(255, 255, 255, 0.16);
   --meta-hairline-soft: rgba(255, 255, 255, 0.09);
 
-  --primary: #2374e1;
-  --primary-hover: #3578e5;
+  /* Inks flip to light so components using them directly stay readable */
+  --meta-ink-deep: #f5f6f7;
+  --meta-ink: #e4e6eb;
+  --meta-charcoal: #ccd0d5;
+  --meta-slate: #b0b3b8;
+  --meta-steel: #8d949e;
+  --meta-ink-button: #ffffff;
+  --meta-on-ink-button: #0a1317;
+  --meta-primary: #4599ff;
+  --meta-primary-deep: #6aadff;
+  --meta-on-primary: #0a1317;
+
+  --primary: #4599ff;
+  --primary-hover: #6aadff;
   --primary-light: rgba(35, 116, 225, 0.18);
   --primary-glow: rgba(35, 116, 225, 0.35);
 
@@ -288,7 +300,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   flex-shrink: 0;
   transition: background-color var(--transition-fast);
 }
@@ -391,7 +403,7 @@ button {
 
 .btn-primary:hover {
   background-color: var(--meta-charcoal);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   transform: translateY(-1px);
 }
 
@@ -618,7 +630,11 @@ button {
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 4px;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+}
+
+.age-pills-row::-webkit-scrollbar {
+  display: none;
 }
 
 /* button-pill-tab: Pill shape, stark white default, dark active */
@@ -645,7 +661,7 @@ button {
 
 .age-pill.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 
@@ -724,7 +740,7 @@ button {
 
 .category-item.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   font-weight: 700;
 }
 
@@ -804,7 +820,7 @@ button {
 
 .sort-tab.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   box-shadow: var(--shadow-sm);
 }
 
@@ -862,9 +878,18 @@ button {
 
 .card-header-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
+}
+
+.card-category-pill span {
+  color: color-mix(in oklab, currentColor 60%, black);
+}
+
+[data-mode='dark'] .card-category-pill span {
+  color: color-mix(in oklab, currentColor 70%, white);
 }
 
 .card-category-pill {
@@ -876,6 +901,7 @@ button {
   font-family: 'Optimistic VF', 'Alexandria', sans-serif;
   font-size: 12px;
   font-weight: 700;
+  white-space: nowrap;
   border: 1px solid currentColor;
 }
 
@@ -1373,7 +1399,7 @@ button {
   height: 48px;
   border-radius: 50%;
   background-color: var(--meta-primary);
-  color: #ffffff;
+  color: var(--meta-on-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1498,7 +1524,7 @@ button {
 
 .drawer-cat-item.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 
@@ -1674,7 +1700,7 @@ button {
   padding: 0 18px;
   border-radius: var(--radius-full);
   background-color: var(--meta-primary);
-  color: #ffffff;
+  color: var(--meta-on-primary);
   font-family: 'Optimistic VF', 'Alexandria', sans-serif;
   font-weight: 700;
   font-size: 14px;
@@ -1723,7 +1749,7 @@ button {
 .mobile-search-tag:active {
   transform: scale(0.94);
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
 }
 
 .mobile-search-hint {
@@ -1812,7 +1838,7 @@ button {
 
 .mobile-cat-pill.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 
@@ -1935,7 +1961,7 @@ button {
   flex-wrap: wrap;
   gap: 14px;
   font-size: 13px;
-  color: var(--meta-stone);
+  color: var(--meta-steel);
 }
 
 /* ==========================================================================
@@ -2067,4 +2093,298 @@ button {
     max-height: 88vh;
     padding: 24px 20px max(24px, env(safe-area-inset-bottom));
   }
+}
+
+/* ==========================================================================
+   Letter opening: a feed card becomes its advice page (View Transitions API)
+   The card keeps its identity while it moves; everything else recedes, then
+   the discussion rises in once the letter has settled. See utils/viewTransition.js
+   ========================================================================== */
+
+/* The overlay paints over html; give it the page color so nothing flashes */
+html {
+  background-color: var(--bg-main);
+}
+
+/* Chrome that exists on both pages stays perfectly still */
+.navbar { view-transition-name: site-header; }
+.mobile-bottom-nav { view-transition-name: site-bottom-nav; }
+
+::view-transition-group(advice-letter) {
+  animation-duration: 560ms;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Reveal instead of stretch: snapshots keep their natural size while the card resizes */
+::view-transition-image-pair(advice-letter) {
+  overflow: clip;
+  border-radius: var(--radius-xxxl);
+}
+
+::view-transition-old(advice-letter),
+::view-transition-new(advice-letter) {
+  height: 100%;
+  object-fit: none;
+  object-position: top center;
+}
+
+/* Matched cross-fade: the pair blends additively, so equal timings keep the card solid mid-flight */
+::view-transition-old(advice-letter) {
+  animation: 280ms ease-out both letter-fade-out;
+}
+
+::view-transition-new(advice-letter) {
+  animation: 280ms ease-out both letter-fade-in;
+}
+
+/* The feed recedes like the present fading while you read */
+::view-transition-old(root) {
+  animation: 240ms cubic-bezier(0.4, 0, 1, 1) both letter-recede;
+}
+
+/* The discussion arrives after the letter has settled */
+::view-transition-new(root) {
+  animation: 420ms 300ms cubic-bezier(0.22, 1, 0.36, 1) both letter-rise;
+}
+
+@keyframes letter-fade-out { to { opacity: 0; } }
+@keyframes letter-fade-in { from { opacity: 0; } }
+@keyframes letter-recede { to { opacity: 0; transform: scale(0.985); } }
+@keyframes letter-rise { from { opacity: 0; transform: translateY(18px); } }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
+}
+
+/* ==========================================================================
+   Hero age dial: drag along the arc of years to "rewind" to an age
+   (components/AgeDial.jsx). Young on the right, old on the left.
+   ========================================================================== */
+
+.hero-banner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+  gap: 40px;
+  align-items: center;
+}
+
+/* The dial adds "لسن 22" to the title; balance the wrap so two lines look intentional */
+.hero-title {
+  text-wrap: balance;
+}
+
+.hero-title-age {
+  color: var(--primary);
+  font-variant-numeric: tabular-nums;
+}
+
+.age-dial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 1;
+}
+
+.age-dial-stage {
+  position: relative;
+  width: 100%;
+  max-width: 340px;
+}
+
+.age-dial-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  touch-action: none; /* dragging the dial must not scroll the page */
+  cursor: grab;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.age-dial.is-dragging .age-dial-svg {
+  cursor: grabbing;
+}
+
+.age-dial-track,
+.age-dial-progress {
+  fill: none;
+  stroke-width: 12;
+  stroke-linecap: round;
+}
+
+.age-dial-track { stroke: var(--bg-subtle); }
+.age-dial-progress { stroke: var(--primary); }
+
+.age-dial-tick {
+  stroke: var(--border-color-hover);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.age-dial-tick.major {
+  stroke: var(--text-light);
+  stroke-width: 2;
+}
+
+.age-dial-label {
+  font-family: 'Alexandria', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  fill: var(--text-light);
+  text-anchor: middle;
+  dominant-baseline: middle;
+  transition: fill 200ms ease-out;
+}
+
+.age-dial-label.is-near { fill: var(--primary); }
+
+.age-dial-knob {
+  fill: var(--bg-card);
+  stroke: var(--primary);
+  stroke-width: 4;
+}
+
+.age-dial-knob-ring {
+  fill: var(--primary);
+  opacity: 0;
+  transition: opacity 200ms ease-out;
+}
+
+.age-dial.is-dragging .age-dial-knob-ring { opacity: 0.16; }
+.age-dial.is-focused .age-dial-knob-ring { opacity: 0.3; }
+.age-dial.is-focused .age-dial-knob { stroke-width: 5; }
+
+.age-dial-readout {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.age-dial-age {
+  font-family: 'Alexandria', sans-serif;
+  font-size: 3.25rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--text-main);
+}
+
+.age-dial-unit {
+  margin-top: 4px;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* The real control: a range input, visually hidden, for keyboard and screen readers */
+.age-dial-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+  clip-path: inset(50%);
+}
+
+.age-dial-hint {
+  font-size: 13px;
+  color: var(--text-muted);
+  transition: opacity 300ms ease-out, visibility 0s linear 300ms;
+}
+
+/* Keeps its space so the preview below doesn't jump when the hint goes */
+.age-dial-hint.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.age-dial-preview {
+  width: 100%;
+  max-width: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px 18px;
+  background-color: var(--bg-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  animation: dial-preview-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.age-dial-preview-meta {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.age-dial-preview-lesson {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(1.7em * 3); /* same height for short and long lessons: no jumping while dragging */
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+.age-dial-preview-lesson:hover { color: var(--primary); }
+
+.age-dial-see-all {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 0;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.age-dial-see-all:hover { text-decoration: underline; }
+
+@keyframes dial-preview-in {
+  from { opacity: 0; transform: translateY(6px); }
+}
+
+@media (max-width: 1024px) {
+  /* One column: put the dial right under the question it answers, before the buttons */
+  .hero-banner {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0;
+  }
+
+  .hero-content { display: contents; }
+  .hero-kicker { order: 1; justify-self: start; }
+  .hero-title { order: 2; }
+  .hero-desc { order: 3; }
+  .age-dial { order: 4; margin-bottom: 24px; }
+  .hero-cta-group { order: 5; }
+  .hero-stats-strip { order: 6; }
+}
+
+@media (max-width: 768px) {
+  .age-dial-stage { max-width: 300px; }
+  .age-dial-age { font-size: 2.6rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .age-dial-preview { animation: none; }
 }
