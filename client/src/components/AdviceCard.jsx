@@ -244,7 +244,7 @@ export default function AdviceCard({ advice, onUpdate }) {
             {/* Report */}
             <button 
               type="button" 
-              onClick={() => setShowReportModal(true)} 
+              onClick={() => (user ? setShowReportModal(true) : navigate('/login'))}
               className="action-btn"
               style={{ padding: '7px 10px' }}
               title="إبلاغ عن محتوى"

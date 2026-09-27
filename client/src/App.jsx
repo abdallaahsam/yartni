@@ -9,6 +9,7 @@ import ProfilePage from './pages/ProfilePage';
 import SavedAdvicesPage from './pages/SavedAdvicesPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import AdminReportsPage from './pages/AdminReportsPage';
 import MobileBottomNav from './components/MobileBottomNav';
 import MobileCategoriesDrawer from './components/MobileCategoriesDrawer';
 import Footer from './components/Footer';
@@ -50,6 +51,7 @@ export default function App() {
           <Route path="/saved" element={<SavedAdvicesPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route path="/admin" element={<AdminReportsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
 

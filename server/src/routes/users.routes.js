@@ -107,7 +107,7 @@ router.get('/@:username', optionalAuth, (req, res) => {
         END as has_bookmarked
       FROM advices a
       JOIN categories c ON c.id = a.category_id
-      WHERE a.user_id = ? AND a.is_anonymous = 0
+      WHERE a.user_id = ? AND a.is_anonymous = 0 AND a.is_hidden = 0
       ORDER BY a.created_at DESC
     `).all(currentUserId, currentUserId, currentUserId, currentUserId, user.id).map(a => ({
       ...a,
@@ -124,7 +124,7 @@ router.get('/@:username', optionalAuth, (req, res) => {
       SELECT COUNT(i.id) as total_impacts
       FROM advice_impacts i
       JOIN advices a ON a.id = i.advice_id
-      WHERE a.user_id = ? AND a.is_anonymous = 0
+      WHERE a.user_id = ? AND a.is_anonymous = 0 AND a.is_hidden = 0
     `).get(user.id);
 
     const totalImpacts = impactRow ? impactRow.total_impacts : 0;
@@ -187,7 +187,7 @@ router.get('/me/bookmarks', requireAuth, (req, res) => {
       JOIN advices a ON a.id = b.advice_id
       JOIN users u ON u.id = a.user_id
       JOIN categories c ON c.id = a.category_id
-      WHERE b.user_id = ?
+      WHERE b.user_id = ? AND a.is_hidden = 0
       ORDER BY b.created_at DESC
     `).all(userId, userId).map(a => ({
       ...a,

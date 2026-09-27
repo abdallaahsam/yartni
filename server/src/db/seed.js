@@ -1,8 +1,9 @@
 import bcrypt from 'bcryptjs';
+import { pathToFileURL } from 'url';
 import { db, initDatabase } from './index.js';
 import { slugify } from '../utils/slugify.js';
 
-async function seed() {
+export async function seed() {
   console.log('🌱 Starting Yareetny database seeding...');
   
   // Ensure tables exist
@@ -406,7 +407,10 @@ async function seed() {
   console.log('🎉 Database seeding completed successfully!');
 }
 
-seed().catch(err => {
-  console.error('❌ Seeding failed:', err);
-  process.exit(1);
-});
+// Run directly via `npm run seed`; index.js imports seed() for first boot
+if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+  seed().catch(err => {
+    console.error('❌ Seeding failed:', err);
+    process.exit(1);
+  });
+}

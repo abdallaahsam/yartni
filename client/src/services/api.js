@@ -60,4 +60,9 @@ export const api = {
   getUserProfile: (username) => request(`/users/@${username}`),
   getMyBookmarks: () => request('/users/me/bookmarks'),
   updateProfile: (body) => request('/users/me/profile', { method: 'PUT', body: JSON.stringify(body) }),
+
+  // Moderation (admins only)
+  getReports: () => request('/admin/reports'),
+  resolveReports: (adviceId, action) => request(`/admin/advices/${adviceId}/resolve`, { method: 'POST', body: JSON.stringify({ action }) }),
+  unhideAdvice: (adviceId) => request(`/admin/advices/${adviceId}/unhide`, { method: 'POST' }),
 };

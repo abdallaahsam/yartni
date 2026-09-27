@@ -157,6 +157,15 @@
   --meta-hairline: rgba(255, 255, 255, 0.16);
   --meta-hairline-soft: rgba(255, 255, 255, 0.09);
 
+  /* Inks flip to light so components using them directly stay readable */
+  --meta-ink-deep: #f5f6f7;
+  --meta-ink: #e4e6eb;
+  --meta-charcoal: #ccd0d5;
+  --meta-slate: #b0b3b8;
+  --meta-steel: #8d949e;
+  --meta-ink-button: #ffffff;
+  --meta-on-ink-button: #0a1317;
+
   --primary: #2374e1;
   --primary-hover: #3578e5;
   --primary-light: rgba(35, 116, 225, 0.18);
@@ -288,7 +297,7 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   flex-shrink: 0;
   transition: background-color var(--transition-fast);
 }
@@ -391,7 +400,7 @@ button {
 
 .btn-primary:hover {
   background-color: var(--meta-charcoal);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   transform: translateY(-1px);
 }
 
@@ -618,7 +627,11 @@ button {
   gap: 10px;
   overflow-x: auto;
   padding-bottom: 4px;
-  scrollbar-width: thin;
+  scrollbar-width: none;
+}
+
+.age-pills-row::-webkit-scrollbar {
+  display: none;
 }
 
 /* button-pill-tab: Pill shape, stark white default, dark active */
@@ -645,7 +658,7 @@ button {
 
 .age-pill.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 
@@ -724,7 +737,7 @@ button {
 
 .category-item.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   font-weight: 700;
 }
 
@@ -804,7 +817,7 @@ button {
 
 .sort-tab.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   box-shadow: var(--shadow-sm);
 }
 
@@ -1498,7 +1511,7 @@ button {
 
 .drawer-cat-item.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 
@@ -1723,7 +1736,7 @@ button {
 .mobile-search-tag:active {
   transform: scale(0.94);
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
 }
 
 .mobile-search-hint {
@@ -1812,7 +1825,7 @@ button {
 
 .mobile-cat-pill.active {
   background-color: var(--meta-ink-deep);
-  color: #ffffff;
+  color: var(--meta-on-ink-button);
   border-color: var(--meta-ink-deep);
 }
 

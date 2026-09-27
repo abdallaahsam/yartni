@@ -47,6 +47,25 @@ export default function HomePage({ onOpenCategories }) {
       .finally(() => setLoading(false));
   }, [currentAge, currentCategory, currentSort, currentQuery]);
 
+  const [loadingMore, setLoadingMore] = useState(false);
+  const loadMore = () => {
+    setLoadingMore(true);
+    api.getAdvices({
+      target_age: currentAge,
+      category_slug: currentCategory,
+      sort: currentSort,
+      q: currentQuery,
+      page: pagination.page + 1
+    })
+      .then(res => {
+        // Dedupe by id: trending order can shift between page requests
+        setAdvices(prev => [...prev, ...res.advices.filter(a => !prev.some(p => p.id === a.id))]);
+        setPagination(res.pagination);
+      })
+      .catch(console.error)
+      .finally(() => setLoadingMore(false));
+  };
+
   const updateParam = (key, value) => {
     const newParams = new URLSearchParams(searchParams);
     if (value && value !== 'all') {
@@ -289,6 +308,17 @@ export default function HomePage({ onOpenCategories }) {
                     }}
                   />
                 ))}
+                {pagination.page < pagination.totalPages && (
+                  <button
+                    type="button"
+                    onClick={loadMore}
+                    className="btn btn-secondary"
+                    style={{ alignSelf: 'center', marginTop: '8px' }}
+                    disabled={loadingMore}
+                  >
+                    {loadingMore ? 'جارٍ التحميل...' : 'عرض المزيد من النصائح'}
+                  </button>
+                )}
               </div>
             ) : (
               <div className="empty-state">

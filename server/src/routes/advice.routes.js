@@ -13,7 +13,7 @@ router.get('/', optionalAuth, (req, res) => {
     const currentUserId = req.user ? req.user.id : null;
     const offset = (Math.max(1, parseInt(page)) - 1) * parseInt(limit);
 
-    let whereConditions = [];
+    let whereConditions = ['a.is_hidden = 0'];
     let params = [];
 
     // Filter by target age
@@ -47,7 +47,7 @@ router.get('/', optionalAuth, (req, res) => {
       }
     }
 
-    const whereClause = whereConditions.length > 0 ? `WHERE ${whereConditions.join(' AND ')}` : '';
+    const whereClause = `WHERE ${whereConditions.join(' AND ')}`;
 
     // Sorting algorithm
     let orderBy = 'a.created_at DESC';
@@ -169,6 +169,7 @@ router.get('/:id', optionalAuth, (req, res) => {
         a.story,
         a.lesson,
         a.is_anonymous,
+        a.is_hidden,
         a.view_count,
         a.created_at,
         c.id as category_id,
@@ -176,19 +177,19 @@ router.get('/:id', optionalAuth, (req, res) => {
         c.slug as category_slug,
         c.icon as category_icon,
         c.color as category_color,
-        CASE 
+        CASE
           WHEN a.is_anonymous = 1 THEN 'مشارك مجهول'
           ELSE u.name
         END as author_name,
-        CASE 
+        CASE
           WHEN a.is_anonymous = 1 THEN NULL
           ELSE u.username
         END as author_username,
-        CASE 
+        CASE
           WHEN a.is_anonymous = 1 THEN '#64748B'
           ELSE u.avatar_color
         END as author_avatar_color,
-        CASE 
+        CASE
           WHEN a.is_anonymous = 1 THEN NULL
           ELSE u.bio
         END as author_bio,
@@ -208,7 +209,8 @@ router.get('/:id', optionalAuth, (req, res) => {
       WHERE a.id = ?
     `).get(currentUserId, currentUserId, currentUserId, currentUserId, id);
 
-    if (!advice) {
+    // Hidden advices stay reachable for admins only
+    if (!advice || (advice.is_hidden && !req.user?.is_admin)) {
       return res.status(404).json({ error: 'النصيحة غير موجودة' });
     }
 
@@ -217,7 +219,8 @@ router.get('/:id', optionalAuth, (req, res) => {
         ...advice,
         has_impacted: Boolean(advice.has_impacted),
         has_bookmarked: Boolean(advice.has_bookmarked),
-        is_anonymous: Boolean(advice.is_anonymous)
+        is_anonymous: Boolean(advice.is_anonymous),
+        is_hidden: Boolean(advice.is_hidden)
       }
     });
   } catch (err) {
@@ -352,15 +355,20 @@ router.post('/:id/bookmark', requireAuth, (req, res) => {
 });
 
 // POST /api/advices/:id/report - Report advice
-router.post('/:id/report', optionalAuth, validate(reportSchema), (req, res) => {
+router.post('/:id/report', requireAuth, validate(reportSchema), (req, res) => {
   try {
     const { id } = req.params;
     const { reason } = req.body;
-    const userId = req.user ? req.user.id : null;
+    const userId = req.user.id;
 
     const advice = db.prepare('SELECT id FROM advices WHERE id = ?').get(id);
     if (!advice) {
       return res.status(404).json({ error: 'النصيحة غير موجودة' });
+    }
+
+    const alreadyReported = db.prepare(`SELECT id FROM reports WHERE advice_id = ? AND user_id = ? AND status = 'pending'`).get(id, userId);
+    if (alreadyReported) {
+      return res.status(409).json({ error: 'لقد أبلغت عن هذه النصيحة من قبل وهي قيد المراجعة' });
     }
 
     db.prepare(`

@@ -11,7 +11,7 @@ router.get('/categories', (req, res) => {
         c.id, c.name, c.slug, c.icon, c.color, c.display_order, c.description,
         COUNT(a.id) as advice_count
       FROM categories c
-      LEFT JOIN advices a ON a.category_id = c.id
+      LEFT JOIN advices a ON a.category_id = c.id AND a.is_hidden = 0
       GROUP BY c.id
       ORDER BY c.display_order ASC
     `).all();
@@ -31,6 +31,7 @@ router.get('/ages', (req, res) => {
         target_age as age,
         COUNT(id) as advice_count
       FROM advices
+      WHERE is_hidden = 0
       GROUP BY target_age
       ORDER BY target_age ASC
     `).all();
