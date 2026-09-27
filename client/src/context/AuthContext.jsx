@@ -55,7 +55,8 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider value={{ user, loading, login, register, logout, updateUser }}>
-      {children}
+      {/* Hold rendering until the stored session is checked, so protected pages don't redirect a logged-in user */}
+      {loading ? <div className="spinner" /> : children}
     </AuthContext.Provider>
   );
 }

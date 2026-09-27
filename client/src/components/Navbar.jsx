@@ -8,8 +8,9 @@ import {
   Bookmark, 
   User, 
   LogOut, 
-  Moon, 
-  Sun 
+  Moon,
+  Sun,
+  ShieldAlert
 } from 'lucide-react';
 import MobileSearchModal from './MobileSearchModal';
 
@@ -111,6 +112,11 @@ export default function Navbar({ onSearch }) {
             <div className="desktop-only">
               {user ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  {user.is_admin && (
+                    <Link to="/admin" className="icon-btn" title="مراجعة البلاغات" aria-label="مراجعة البلاغات">
+                      <ShieldAlert size={18} />
+                    </Link>
+                  )}
                   <Link to="/saved" className="icon-btn" title="النصائح المحفوظة">
                     <Bookmark size={18} />
                   </Link>
