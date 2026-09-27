@@ -1,5 +1,13 @@
-import { server, app } from './src/index.js';
-import { db } from './src/db/index.js';
+import os from 'os';
+import path from 'path';
+import fs from 'fs';
+
+// Fresh throwaway DB per run (also exercises seed-on-first-boot); seeded tarek is admin
+const testDbPath = path.join(os.tmpdir(), `yareetny-test-${Date.now()}.sqlite`);
+process.env.DB_PATH = testDbPath;
+process.env.ADMIN_EMAILS = 'tarek@example.com';
+const { server } = await import('./src/index.js');
+const { db } = await import('./src/db/index.js');
 
 const BASE = 'http://localhost:5000/api';
 
@@ -167,13 +175,67 @@ async function runSuite() {
     assert(getComments.comments.length === 1 && getComments.comments[0].user_username === registerPayload.username, 'GET comments returns attached user metadata');
 
     // Report
-    const reportRes = await fetch(`${BASE}/advices/${createdAdviceId}/report`, {
+    const reportBody = JSON.stringify({ reason: 'تجربة بلاغ فحص أمني للمحتوى' });
+    const anonReport = await fetch(`${BASE}/advices/${createdAdviceId}/report`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ reason: 'تجربة بلاغ فحص أمني للمحتوى' })
+      body: reportBody
     });
-    const reportData = await reportRes.json();
+    assert(anonReport.status === 401, 'POST /api/advices/:id/report rejects anonymous users');
+
+    const authJson = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${token}` };
+    const reportRes = await fetch(`${BASE}/advices/${createdAdviceId}/report`, { method: 'POST', headers: authJson, body: reportBody });
     assert(reportRes.status === 200, 'POST /api/advices/:id/report submits report successfully');
+
+    const dupReport = await fetch(`${BASE}/advices/${createdAdviceId}/report`, { method: 'POST', headers: authJson, body: reportBody });
+    assert(dupReport.status === 409, 'Duplicate pending report from same user is rejected');
+
+    // 7b. Moderation
+    console.log('\n--- 7b. Testing Moderation (admin reports, hide, unhide) ---');
+    const nonAdminRes = await fetch(`${BASE}/admin/reports`, { headers: { 'Authorization': `Bearer ${token}` } });
+    assert(nonAdminRes.status === 403, 'GET /api/admin/reports forbidden for non-admin');
+
+    const adminLogin = await fetch(`${BASE}/auth/login`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email: 'tarek@example.com', password: 'password123' })
+    }).then(r => r.json());
+    const adminAuth = { 'Content-Type': 'application/json', 'Authorization': `Bearer ${adminLogin.token}` };
+
+    const adminMe = await fetch(`${BASE}/auth/me`, { headers: adminAuth }).then(r => r.json());
+    assert(adminMe.user.is_admin === true, 'GET /api/auth/me exposes is_admin for admins');
+
+    const queue = await fetch(`${BASE}/admin/reports`, { headers: adminAuth }).then(r => r.json());
+    assert(queue.reports.some(r => r.advice_id === createdAdviceId && r.report_count === 1), 'Admin report queue lists the reported advice');
+
+    const hideRes = await fetch(`${BASE}/admin/advices/${createdAdviceId}/resolve`, { method: 'POST', headers: adminAuth, body: JSON.stringify({ action: 'hide' }) });
+    assert(hideRes.status === 200, 'Admin can hide a reported advice');
+
+    const hiddenDetail = await fetch(`${BASE}/advices/${createdAdviceId}`);
+    assert(hiddenDetail.status === 404, 'Hidden advice returns 404 for the public');
+
+    const hiddenFeed = await fetch(`${BASE}/advices?sort=latest&limit=50`).then(r => r.json());
+    assert(!hiddenFeed.advices.some(a => a.id === createdAdviceId), 'Hidden advice is excluded from the feed');
+
+    const hiddenBookmarks = await fetch(`${BASE}/users/me/bookmarks`, { headers: { 'Authorization': `Bearer ${token}` } }).then(r => r.json());
+    assert(!hiddenBookmarks.bookmarks.some(b => b.id === createdAdviceId), 'Hidden advice is excluded from bookmarks');
+
+    const adminDetail = await fetch(`${BASE}/advices/${createdAdviceId}`, { headers: adminAuth });
+    assert(adminDetail.status === 200, 'Admins can still open a hidden advice');
+
+    const queueAfter = await fetch(`${BASE}/admin/reports`, { headers: adminAuth }).then(r => r.json());
+    assert(queueAfter.reports.some(r => r.advice_id === createdAdviceId && r.is_hidden), 'Hidden advice stays in the admin queue so it can be restored');
+
+    const unhideRes = await fetch(`${BASE}/admin/advices/${createdAdviceId}/unhide`, { method: 'POST', headers: adminAuth });
+    const restored = await fetch(`${BASE}/advices/${createdAdviceId}`);
+    assert(unhideRes.status === 200 && restored.status === 200, 'Admin can unhide an advice');
+
+    // Dismiss path: a fresh report, dismissed, leaves the queue and keeps the advice public
+    await fetch(`${BASE}/advices/${createdAdviceId}/report`, { method: 'POST', headers: adminAuth, body: reportBody });
+    const dismissRes = await fetch(`${BASE}/admin/advices/${createdAdviceId}/resolve`, { method: 'POST', headers: adminAuth, body: JSON.stringify({ action: 'dismiss' }) });
+    const queueDismissed = await fetch(`${BASE}/admin/reports`, { headers: adminAuth }).then(r => r.json());
+    const stillPublic = await fetch(`${BASE}/advices/${createdAdviceId}`);
+    assert(dismissRes.status === 200 && !queueDismissed.reports.some(r => r.advice_id === createdAdviceId) && stillPublic.status === 200, 'Dismissed reports leave the queue and the advice stays public');
 
     // 8. User Profile & Badges
     console.log('\n--- 8. Testing User Profiles & Gamification Badges ---');
@@ -206,6 +268,8 @@ async function runSuite() {
     failed++;
   } finally {
     server.close(() => {
+      db.close();
+      for (const suffix of ['', '-wal', '-shm']) fs.rmSync(testDbPath + suffix, { force: true });
       console.log('Server shut down cleanly.');
       process.exit(failed > 0 ? 1 : 0);
     });

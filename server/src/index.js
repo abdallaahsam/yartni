@@ -6,7 +6,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import { config } from './config/config.js';
-import { initDatabase } from './db/index.js';
+import { initDatabase, isEmpty } from './db/index.js';
+import { seed } from './db/seed.js';
 import { apiLimiter } from './middleware/rateLimiter.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -17,6 +18,7 @@ import categoriesRoutes from './routes/categories.routes.js';
 import adviceRoutes from './routes/advice.routes.js';
 import commentsRoutes from './routes/comments.routes.js';
 import usersRoutes from './routes/users.routes.js';
+import adminRoutes from './routes/admin.routes.js';
 
 const app = express();
 
@@ -24,6 +26,9 @@ const app = express();
 try {
   initDatabase();
   console.log('✅ SQLite Database initialized successfully with FTS5 and indexes');
+  if (isEmpty()) {
+    await seed();
+  }
 } catch (err) {
   console.error('❌ Database initialization error:', err);
 }
@@ -53,6 +58,7 @@ app.use('/api', categoriesRoutes);
 app.use('/api/advices', adviceRoutes);
 app.use('/api/advices/:id/comments', commentsRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Serve client production bundle if available (Railway / Cloud deployment)
 const clientDistPath = path.resolve(__dirname, '../../client/dist');

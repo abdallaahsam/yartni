@@ -49,3 +49,8 @@ IMPLEMENTATION_PLAN.md
 ياريتني.html
 
 DESIGN-meta.md
+# Local SQLite database (created and seeded on first boot)
+server/database.sqlite
+
+# graphify knowledge graph output
+graphify-out/

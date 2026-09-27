@@ -5,7 +5,7 @@ import { db } from '../db/index.js';
 import { config } from '../config/config.js';
 import { validate, registerSchema, loginSchema } from '../middleware/validate.js';
 import { authLimiter } from '../middleware/rateLimiter.js';
-import { requireAuth } from '../middleware/auth.js';
+import { requireAuth, withRole } from '../middleware/auth.js';
 
 const router = express.Router();
 
@@ -59,7 +59,7 @@ router.post('/register', authLimiter, validate(registerSchema), async (req, res)
 
     return res.status(201).json({
       message: 'تم إنشاء الحساب بنجاح',
-      user,
+      user: withRole(user),
       token
     });
   } catch (err) {
@@ -101,7 +101,7 @@ router.post('/login', authLimiter, validate(loginSchema), async (req, res) => {
 
     return res.json({
       message: 'تم تسجيل الدخول بنجاح',
-      user: safeUser,
+      user: withRole(safeUser),
       token
     });
   } catch (err) {
